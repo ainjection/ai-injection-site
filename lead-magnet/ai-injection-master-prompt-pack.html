@@ -1,0 +1,1298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>AI Injection — Master Prompt Pack</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  @page { size: A4; margin: 18mm 16mm; }
+  * { box-sizing: border-box; }
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    color: #1a1a35;
+    background: #ffffff;
+    line-height: 1.55;
+    margin: 0;
+    font-size: 11pt;
+  }
+  .cover {
+    page-break-after: always;
+    background: linear-gradient(135deg, #0F0F23 0%, #1a1140 60%, #2a0f5e 100%);
+    color: #ffffff;
+    padding: 80px 60px;
+    min-height: 95vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .cover::before {
+    content: '';
+    position: absolute;
+    top: -50px; right: -50px;
+    width: 400px; height: 400px;
+    background: radial-gradient(circle, rgba(0,212,255,0.4) 0%, transparent 70%);
+    filter: blur(20px);
+  }
+  .cover::after {
+    content: '';
+    position: absolute;
+    bottom: -100px; left: -100px;
+    width: 500px; height: 500px;
+    background: radial-gradient(circle, rgba(139,92,246,0.4) 0%, transparent 70%);
+    filter: blur(30px);
+  }
+  .cover-eyebrow {
+    font-size: 13pt;
+    letter-spacing: 0.3em;
+    color: #00D4FF;
+    font-weight: 700;
+    margin-bottom: 24px;
+    text-transform: uppercase;
+    position: relative;
+  }
+  .cover h1 {
+    font-size: 56pt;
+    font-weight: 900;
+    line-height: 1.05;
+    margin: 0 0 24px;
+    letter-spacing: -0.02em;
+    background: linear-gradient(135deg, #00D4FF 0%, #ffffff 50%, #8B5CF6 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    position: relative;
+  }
+  .cover-tagline {
+    font-size: 16pt;
+    color: rgba(255,255,255,0.85);
+    max-width: 560px;
+    line-height: 1.4;
+    position: relative;
+  }
+  .cover-stats {
+    display: flex;
+    gap: 40px;
+    margin-top: 48px;
+    position: relative;
+  }
+  .cover-stat { }
+  .cover-stat-num {
+    font-size: 42pt;
+    font-weight: 800;
+    color: #00D4FF;
+    text-shadow: 0 0 20px rgba(0,212,255,0.6);
+    line-height: 1;
+  }
+  .cover-stat-label {
+    font-size: 10pt;
+    color: rgba(255,255,255,0.7);
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    margin-top: 6px;
+  }
+  .cover-footer {
+    position: absolute;
+    bottom: 40px; left: 60px; right: 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 9pt;
+    color: rgba(255,255,255,0.6);
+  }
+  .cover-brand {
+    font-weight: 800;
+    letter-spacing: 0.2em;
+    color: #00D4FF;
+  }
+
+  .toc {
+    page-break-after: always;
+    padding: 40px 30px;
+  }
+  .toc h2 {
+    font-size: 24pt;
+    color: #0F0F23;
+    border-bottom: 3px solid #00D4FF;
+    padding-bottom: 10px;
+    margin-bottom: 24px;
+  }
+  .toc ul {
+    list-style: none;
+    padding-left: 0;
+  }
+  .toc li {
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
+    font-size: 11pt;
+  }
+  .toc a {
+    color: #1a1a35;
+    text-decoration: none;
+    font-weight: 600;
+  }
+  .toc .muted { color: #888; font-weight: 400; }
+
+  section.page-break { page-break-before: always; padding: 30px; }
+  .section-header {
+    margin-bottom: 28px;
+    padding-bottom: 16px;
+    border-bottom: 2px solid #00D4FF;
+  }
+  .section-badge {
+    display: inline-block;
+    padding: 4px 12px;
+    background: linear-gradient(135deg, #00D4FF, #8B5CF6);
+    color: white;
+    font-size: 9pt;
+    font-weight: 800;
+    border-radius: 12px;
+    letter-spacing: 0.1em;
+    margin-bottom: 8px;
+  }
+  .section-title {
+    font-size: 28pt;
+    font-weight: 800;
+    margin: 0 0 8px;
+    color: #0F0F23;
+    letter-spacing: -0.02em;
+  }
+  .section-subtitle {
+    color: #555;
+    font-size: 11pt;
+    margin: 0;
+  }
+  .section-body h2 {
+    font-size: 16pt;
+    color: #0F0F23;
+    margin-top: 28px;
+    margin-bottom: 12px;
+    border-left: 4px solid #00D4FF;
+    padding-left: 12px;
+  }
+  .section-body h3 {
+    font-size: 12.5pt;
+    color: #1a1a35;
+    margin-top: 18px;
+    margin-bottom: 6px;
+    font-weight: 700;
+  }
+  .section-body h4, .section-body h5, .section-body h6 {
+    font-size: 11pt;
+    margin-top: 14px;
+    margin-bottom: 4px;
+  }
+  .section-body p {
+    margin: 6px 0 12px;
+    color: #2a2a45;
+  }
+  .section-body ul { margin: 6px 0 14px 20px; }
+  .section-body li { margin: 4px 0; }
+
+  .footer-cta {
+    page-break-before: always;
+    background: linear-gradient(135deg, #0F0F23 0%, #1a1140 100%);
+    color: white;
+    padding: 80px 60px;
+    text-align: center;
+    min-height: 95vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .footer-cta h2 {
+    font-size: 32pt;
+    font-weight: 900;
+    margin: 0 0 16px;
+    background: linear-gradient(135deg, #00D4FF, #8B5CF6);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .footer-cta p {
+    font-size: 14pt;
+    color: rgba(255,255,255,0.85);
+    max-width: 540px;
+    margin: 0 auto 32px;
+    line-height: 1.4;
+  }
+  .footer-cta .cta-btn {
+    display: inline-block;
+    background: linear-gradient(135deg, #00D4FF, #8B5CF6);
+    color: #0F0F23;
+    font-weight: 800;
+    padding: 16px 40px;
+    border-radius: 32px;
+    text-decoration: none;
+    font-size: 13pt;
+    box-shadow: 0 0 40px rgba(0,212,255,0.5);
+  }
+  .footer-cta .cta-url {
+    margin-top: 16px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10pt;
+    color: #00D4FF;
+  }
+</style>
+</head>
+<body>
+
+<div class="cover">
+  <div class="cover-eyebrow">AI Injection · Master Pack v1</div>
+  <h1>Every<br>AI Prompt<br>You'll Need.</h1>
+  <p class="cover-tagline">The complete library of camera movements, lighting setups, shot types, music genres, transitions and prompt structures for AI video, image, and music generation. One file. Yours forever.</p>
+  <div class="cover-stats">
+    <div class="cover-stat">
+      <div class="cover-stat-num">200+</div>
+      <div class="cover-stat-label">prompts</div>
+    </div>
+    <div class="cover-stat">
+      <div class="cover-stat-num">8</div>
+      <div class="cover-stat-label">collections</div>
+    </div>
+    <div class="cover-stat">
+      <div class="cover-stat-num">$0</div>
+      <div class="cover-stat-label">forever</div>
+    </div>
+  </div>
+  <div class="cover-footer">
+    <span class="cover-brand">AI INJECTION</span>
+    <span>aiinjection.com · Skool community: skool.com/ai-injection-4241</span>
+  </div>
+</div>
+
+<div class="toc">
+  <h2>What's Inside</h2>
+  <ul>
+<li><a href="#42-camera-movements">42 Camera Movements</a> <span class="muted">— Every camera movement with copy-paste prompt for AI video generation.</span></li>
+<li><a href="#27-cinematic-looks-lighting">27 Cinematic Looks</a> <span class="muted">— Lighting setups for cinematic AI shots.</span></li>
+<li><a href="#26-camera-angles-shot-types">26 Camera Angles & Shot Types</a> <span class="muted">— Composition prompts for any AI video tool.</span></li>
+<li><a href="#46-song-genres">46 Song Genres for Suno</a> <span class="muted">— Music genre prompt structure for Suno and other AI music generators.</span></li>
+<li><a href="#viral-video-transitions">Viral Video Transitions</a> <span class="muted">— Transition prompts for short-form video.</span></li>
+<li><a href="#text-to-video-prompt-structure">Text-to-Video Prompt Structure</a> <span class="muted">— How to structure prompts that work.</span></li>
+<li><a href="#16-ai-image-generators">16 AI Image Generators</a> <span class="muted">— Comparison and prompts for the best AI image tools.</span></li>
+<li><a href="#elevenlabs-audio-tags">ElevenLabs Audio Tags</a> <span class="muted">— Voice and emotion tags for AI speech synthesis.</span></li>
+  </ul>
+</div>
+
+
+<section id="42-camera-movements" class="page-break">
+  <div class="section-header">
+    <span class="section-badge">42</span>
+    <h1 class="section-title">42 Camera Movements</h1>
+    <p class="section-subtitle">Every camera movement with copy-paste prompt for AI video generation.</p>
+  </div>
+  <div class="section-body">
+<p>AllDolly/TrackZoom/LensDrone/CranePan/Tilt</p>
+<h3>Slow Dolly In</h3>
+<p>Slow dolly in, camera moves slowly forward toward the subject.</p>
+<h3>Slow Dolly Out</h3>
+<p>Slow dolly out, camera moves slowly backwards away from the subject.</p>
+<h3>Fast Dolly In</h3>
+<p>Fast dolly in, camera moves rapidly forward toward the subject, urgent motion.</p>
+<h3>Vertigo Effect (Zolly)</h3>
+<p>Vertigo effect, dolly zoom, camera moves backward while zooming in, background expands.</p>
+<h3>Extreme Macro Zoom</h3>
+<p>Extreme macro zoom, zoom transition from subject to micro details of surface.</p>
+<h3>Cosmic Hyper Zoom</h3>
+<p>Cosmic hyper zoom, fast zoom transition from extreme wide view down to macro level.</p>
+<h3>Over the Shoulder (OTS) Shot</h3>
+<p>Over the shoulder shot, camera mounted behind subject A framing subject B.</p>
+<h3>Fisheye or Peephole Lens</h3>
+<p>Fisheye lens, extreme wide-angle distortion, circular frame.</p>
+<h3>Reveal from Behind</h3>
+<p>Wipe movement, camera slides laterally from behind foreground object to reveal the scene.</p>
+<h3>Through Shot</h3>
+<p>Fly through, camera moves through an opening into the scene.</p>
+<h3>Reveal from Blur</h3>
+<p>Rack focus, start completely out of focus, slowly pull focus until sharp.</p>
+<h3>Rack Focus</h3>
+<p>Rack focus, focus shifts from the foreground object to the background subject.</p>
+<h3>Tilt Up</h3>
+<p>Tilt up, camera pans vertically up from bottom to top.</p>
+<h3>Tilt Down</h3>
+<p>Tilt down, camera pans vertically down from top to bottom.</p>
+<h3>Camera Truck Left</h3>
+<p>Truck left, camera moves sideways on a track to the left.</p>
+<h3>Lateral Truck Right</h3>
+<p>Truck right, camera moves sideways on a track to the right.</p>
+<h3>Orbit 180 (Spin)</h3>
+<p>Orbit 180, camera moves in a half-circle around the subject.</p>
+<h3>Fast 360 Orbit (Spin)</h3>
+<p>Fast 360 orbit, camera spins rapidly 360 degrees around the subject.</p>
+<h3>True Orbit 180 \[ [Seedance 1.5 Pro](https://aiinjection.com/go/flexclip)\]</h3>
+<p>180 orbit, camera orbits 180 degrees around the \[subject\].</p>
+<h3>True Orbit 360 \[ [Seedance 1.5 Pro](https://aiinjection.com/go/flexclip)\]</h3>
+<p>Fast 360 orbit, camera orbits 360 degrees around the \[subject\].</p>
+<h3>Slow Cinematic Arc</h3>
+<p>Slow cinematic arc, camera moves in a wide curve to reveal side profile.</p>
+<h3>Pedestal Down</h3>
+<p>Pedestal down, camera lowers vertically straight down.</p>
+<h3>Pedestal Up</h3>
+<p>Pedestal up, camera rises vertically straight up from waist to eye level.</p>
+<h3>Crane Up (High Angle Reveal)</h3>
+<p>Crane up, camera lifts high into the air.</p>
+<h3>Crane Down (Landing)</h3>
+<p>Crane down, camera descends slowly to the subject.</p>
+<h3>Smooth Optical Zoom In</h3>
+<p>Smooth optical zoom in, lens magnifies subject, camera stays stationary.</p>
+<h3>Smooth Optical Zoom Out</h3>
+<p>Smooth optical zoom out, lens widens, background becomes blurry.</p>
+<h3>Snap Zoom (Crash Zoom)</h3>
+<p>Snap zoom, crash zoom, rapid zoom directly into the eyes.</p>
+<h3>Drone Fly Over</h3>
+<p>Drone fly over, high altitude flight moving forward over the landscape.</p>
+<h3>Epic Drone Reveal</h3>
+<p>Epic drone reveal, rising and tilting down to reveal the scene.</p>
+<h3>Large Scale Drone Orbit</h3>
+<p>Large scale drone orbit, massive sweeping circle around the landscape.</p>
+<h3>Top Down (God's Eye View)</h3>
+<p>Top down shot, camera pointing straight down, slow twist.</p>
+<h3>FPV Drone Aggressive (Drone Dive)</h3>
+<p>FPV drone dive, aggressive diving motion down a vertical structure.</p>
+<h3>Handheld Documentary Style</h3>
+<p>Handheld camera, shaky motion, natural movement, documentary style.</p>
+<h3>Whip Pan</h3>
+<p>Whip pan, camera whips violently to the side with extreme directional motion blur.</p>
+<h3>Dutch Angle (Roll)</h3>
+<p>Dutch angle, camera roll, tilted sideways on Z-axis.</p>
+<h3>Leading Shot (Backward Tracking)</h3>
+<p>Leading shot, camera moves backward matching the subject's speed.</p>
+<h3>Following Shot (Forward Tracking)</h3>
+<p>Following shot, camera follows behind the subject matching speed.</p>
+<h3>Side Tracking (Parallel)</h3>
+<p>Side tracking, camera trucks alongside the subject.</p>
+<h3>POV Walk (First Person Walk)</h3>
+<p>POV walk, first person camera moving forward with bobbing motion.</p>
+<h3>Hyperlapse (Moving Time-Lapse)</h3>
+<p>Hyperlapse, camera moves forward rapidly, time accelerated, fast motion, light trails.</p>
+<h3>Barrel Roll (Vortex Inception Shot)</h3>
+<p>Barrel roll, camera spins 360 degrees clockwise while moving forward, disorienting.</p>
+<h3>Bullet Time (Frozen Moment)</h3>
+<p>Bullet time, frozen moment, ultra slow motion, camera orbit right.</p>
+<h3>Worm’s Eye Tracking (Ground Level)</h3>
+<p>Worm's eye view, low angle tracking, camera moves along the ground looking up.</p>
+<p>×</p>
+<p>![AI Injection footer logo](https://aiinjection.com/wp-content/uploads/2026/01/logo-footer.webp)</p>
+<p>Limerick, Ireland</p>
+<p>mail@aiinjection.com</p>
+<h4>Learn AI</h4>
+<p>Join the best communities to learn AI content creation. Top free and paid groups for AI video, image generation, automation, and earning online.</p>
+<h4>AI Toolset</h4>
+<p>AI Injection AI Toolset featuring ElevenLabs, FlexClip, and MindStudio. Access the best tools for audio, video, and AI development to scale your content.</p>
+<p>© 2026 AI Injection • [Privacy Policy](https://aiinjection.com/privacy-policy/) • [Cookie Policy](https://aiinjection.com/cookie-policy/) • [Disclaimer](https://aiinjection.com/disclaimer/) • [TOS](https://aiinjection.com/terms-of-service/)</p>
+<p>Search for:</p>
+<p>We use cookies to analyze our traffic, personalize content, and provide social media features. You can choose to accept all or manage your preferences in the [settings](https://aiinjection.com/42-camera-movements-ai-prompts/#)[Accept](https://aiinjection.com/42-camera-movements-ai-prompts/#)</p>
+<h4>Analytics & Performance</h4>
+<p>We use tools like Google Analytics to understand how visitors interact with our website. This helps us improve our tutorials and user experience. All data is anonymized.</p>
+<h4>Video Embeds</h4>
+<p>We embed videos from external providers like YouTube to demonstrate AI tools. Loading these videos may share data with those providers according to their own privacy policies.</p>
+  </div>
+</section>
+<section id="27-cinematic-looks-lighting" class="page-break">
+  <div class="section-header">
+    <span class="section-badge">27</span>
+    <h1 class="section-title">27 Cinematic Looks</h1>
+    <p class="section-subtitle">Lighting setups for cinematic AI shots.</p>
+  </div>
+  <div class="section-body">
+<p>AllCinema LegendsFilm StocksLightingStylized & Abstract</p>
+<h3>High Key</h3>
+<p>High key lighting, bright and airy, low contrast, clean white tones, commercial aesthetic</p>
+<h3>Solarpunk</h3>
+<p>Solarpunk aesthetic, eco-futurism, lush greenery, bright sunlight, white and green palette</p>
+<h3>Golden Hour</h3>
+<p>Golden Hour lighting, sun-drenched, warm orange haze, backlit tree, long shadows, cinematic landscape</p>
+<h3>Steampunk</h3>
+<p>Steampunk aesthetic, brass and copper, Victorian industrial, warm golden atmosphere, steam</p>
+<h3>Kodachrome</h3>
+<p>Kodachrome film, vintage photography, warm tones, archival footage, analog look</p>
+<h3>Candlelight</h3>
+<p>Candlelight, fire lighting, warm glow, deep shadows, intimate atmosphere, chiaroscuro</p>
+<h3>Wes Anderson</h3>
+<p>Pastel color palette, Wes Anderson style, 35mm film look, flat lighting, symmetrical composition</p>
+<h3>Sepia</h3>
+<p>Sepia color grading, monochromatic brown tint, Western movie aesthetic, warm atmosphere</p>
+<h3>Bleach Bypass</h3>
+<p>Bleach bypass, silver retention, desaturated, high contrast, gritty texture</p>
+<h3>Nordic Noir</h3>
+<p>Nordic noir aesthetic, desaturated blue and grey, overcast lighting, bleak atmosphere, muted tones</p>
+<h3>Film Noir</h3>
+<p>Film Noir, black and white, chiaroscuro, high contrast monochrome, dramatic shadows</p>
+<h3>Silhouette</h3>
+<p>Silhouette style, backlit subject, high contrast, pitch black foreground</p>
+<h3>Teal & Orange</h3>
+<p>Teal and orange color grading, blockbuster aesthetic, complementary colors, cyan and orange</p>
+<h3>CineStill 800T</h3>
+<p>CineStill 800T, red halation, tungsten balance, cinematic night, 35mm film</p>
+<h3>Blue Hour</h3>
+<p>Blue hour, twilight, cold tones, deep blue, melancholic lighting</p>
+<h3>Bioluminescence</h3>
+<p>Bioluminescence, glowing plants, deep blue night, magical atmosphere, organic neon</p>
+<h3>Matrix Green</h3>
+<p>Green tint, fluorescent green, Matrix aesthetic, dystopian color palette</p>
+<h3>Night Vision</h3>
+<p>CCTV footage, night vision, monochromatic green, security camera, grainy, surveillance feed</p>
+<h3>Technicolor</h3>
+<p>Technicolor, 3-strip color, hyper-saturated, vintage cinema, vibrant colors</p>
+<h3>Duotone</h3>
+<p>Duotone, double color exposure, \[Color A\] and \[Color B\] palette, pop art</p>
+<h3>Cyberpunk</h3>
+<p>Cyberpunk, neon lighting, magenta and cyan, reflective visor, neon noir, wet texture</p>
+<h3>Ultraviolet</h3>
+<p>Ultraviolet light, blacklight, fluorescent glow, UV reactive, deep purple</p>
+<h3>Infrared</h3>
+<p>Infrared photography, Kodak Aerochrome, pink trees, surreal colors, false color</p>
+<h3>Thermal Imaging</h3>
+<p>Thermal imaging, heat map, infrared camera, predator vision</p>
+<h3>Sodium Vapor</h3>
+<p>Sodium vapor lighting, orange streetlights, urban night, industrial atmosphere</p>
+<h3>Cross-Processed</h3>
+<p>Cross-processed, color shift, unnatural colors, lomo style, chemical imbalance</p>
+<h3>Selective Color</h3>
+<p>Selective color, monochrome with red splash, Sin City style, color isolation</p>
+<p>××</p>
+<p>![AI Injection footer logo](https://aiinjection.com/wp-content/uploads/2026/01/logo-footer.webp)</p>
+<p>Limerick, Ireland</p>
+<p>mail@aiinjection.com</p>
+<h4>Learn AI</h4>
+<p>Join the best communities to learn AI content creation. Top free and paid groups for AI video, image generation, automation, and earning online.</p>
+<h4>AI Toolset</h4>
+<p>AI Injection AI Toolset featuring ElevenLabs, FlexClip, and MindStudio. Access the best tools for audio, video, and AI development to scale your content.</p>
+<p>© 2026 AI Injection • [Privacy Policy](https://aiinjection.com/privacy-policy/) • [Cookie Policy](https://aiinjection.com/cookie-policy/) • [Disclaimer](https://aiinjection.com/disclaimer/) • [TOS](https://aiinjection.com/terms-of-service/)</p>
+<p>Search for:</p>
+<p>We use cookies to analyze our traffic, personalize content, and provide social media features. You can choose to accept all or manage your preferences in the [settings](https://aiinjection.com/27-cinematic-looks-lighting-for-ai-video-prompts/#)[Accept](https://aiinjection.com/27-cinematic-looks-lighting-for-ai-video-prompts/#)</p>
+<h4>Analytics & Performance</h4>
+<p>We use tools like Google Analytics to understand how visitors interact with our website. This helps us improve our tutorials and user experience. All data is anonymized.</p>
+<h4>Video Embeds</h4>
+<p>We embed videos from external providers like YouTube to demonstrate AI tools. Loading these videos may share data with those providers according to their own privacy policies.</p>
+  </div>
+</section>
+<section id="26-camera-angles-shot-types" class="page-break">
+  <div class="section-header">
+    <span class="section-badge">26</span>
+    <h1 class="section-title">26 Camera Angles & Shot Types</h1>
+    <p class="section-subtitle">Composition prompts for any AI video tool.</p>
+  </div>
+  <div class="section-body">
+<h2>Shot Types, Camera Angles, Perspective & Lens</h2>
+<p>AllShot SizesCamera AnglesPerspective & Lens</p>
+<h3>Extreme Wide Shot (EWS)</h3>
+<p>Extreme wide shot, establishing shot, vast landscape, tiny subject</p>
+<h3>Wide Shot (WS)</h3>
+<p>Wide shot, full body, long shot</p>
+<h3>Full Shot (FS)</h3>
+<p>Full shot, full body visible, head to toe</p>
+<h3>Medium Long Shot (MLS)</h3>
+<p>Medium long shot, framed from knees up, american shot, three-quarter length</p>
+<h3>Medium Shot (MS)</h3>
+<p>Medium shot, waist up, mid-shot</p>
+<h3>Medium Close-Up (MCU)</h3>
+<p>Medium close-up, chest up, head and shoulders</p>
+<h3>Close-Up (CU)</h3>
+<p>Close-up, face shot, tight framing</p>
+<h3>Extreme Close-Up (ECU)</h3>
+<p>Extreme close-up, macro eye, ECU, detail shot</p>
+<h3>Macro Shot</h3>
+<p>Macro photography, microscopic view, highly detailed texture, 100mm macro lens</p>
+<h3>Eye Level</h3>
+<p>Eye level shot, neutral angle, straight on, camera at eye height</p>
+<h3>Low Angle</h3>
+<p>Low angle, looking up, imposing view, hero angle</p>
+<h3>High Angle</h3>
+<p>High angle, looking down, inferior angle, subject looking up</p>
+<h3>Worm’s Eye View</h3>
+<p>Worm's eye view, ground level, looking straight up, ant's view</p>
+<h3>Bird’s Eye View / Overhead</h3>
+<p>Bird's eye view, overhead shot, top-down view, 90 degree angle</p>
+<h3>God’s Eye View</h3>
+<p>God's eye view, satellite view, high altitude, vertical angle</p>
+<h3>Dutch Angle / Canted Angle</h3>
+<p>Dutch angle, canted angle, tilted horizon, diagonal shot, disorienting</p>
+<h3>Point of View (POV)</h3>
+<p>POV, first-person perspective, seeing through eyes, hands visible</p>
+<h3>Over-the-Shoulder (OTS)</h3>
+<p>Over-the-shoulder shot, looking past shoulder, blurry foreground shoulder, OTS</p>
+<h3>Two-Shot</h3>
+<p>Two-shot, 2 subjects in frame, medium shot, side-by-side</p>
+<h3>Fisheye View</h3>
+<p>Fisheye lens, barrel distortion, ultra-wide 180 degree, vignette</p>
+<h3>Isometric View</h3>
+<p>Isometric view, orthographic projection, 3d render, diorama</p>
+<h3>Telephoto / Compression</h3>
+<p>Telephoto lens, long focal length, compressed background, flattened perspective</p>
+<h3>Selfie View</h3>
+<p>Selfie angle, arm's length, front facing camera, phone camera distortion</p>
+<h3>Drone View</h3>
+<p>Drone view, aerial photography, hovering, high altitude</p>
+<h3>CCTV / Security Cam</h3>
+<p>CCTV footage, security camera, surveillance view, grainy, high angle corner</p>
+<h3>GoPro / Action Cam</h3>
+<p>GoPro footage, action camera, body cam, wide angle, barrel distortion</p>
+<p>××</p>
+<p>![AI Injection footer logo](https://aiinjection.com/wp-content/uploads/2026/01/logo-footer.webp)</p>
+<p>Limerick, Ireland</p>
+<p>mail@aiinjection.com</p>
+<h4>Learn AI</h4>
+<p>Join the best communities to learn AI content creation. Top free and paid groups for AI video, image generation, automation, and earning online.</p>
+<h4>AI Toolset</h4>
+<p>AI Injection AI Toolset featuring ElevenLabs, FlexClip, and MindStudio. Access the best tools for audio, video, and AI development to scale your content.</p>
+<p>© 2026 AI Injection • [Privacy Policy](https://aiinjection.com/privacy-policy/) • [Cookie Policy](https://aiinjection.com/cookie-policy/) • [Disclaimer](https://aiinjection.com/disclaimer/) • [TOS](https://aiinjection.com/terms-of-service/)</p>
+<p>Search for:</p>
+<p>We use cookies to analyze our traffic, personalize content, and provide social media features. You can choose to accept all or manage your preferences in the [settings](https://aiinjection.com/26-camera-angles-shot-types/#)[Accept](https://aiinjection.com/26-camera-angles-shot-types/#)</p>
+<h4>Analytics & Performance</h4>
+<p>We use tools like Google Analytics to understand how visitors interact with our website. This helps us improve our tutorials and user experience. All data is anonymized.</p>
+<h4>Video Embeds</h4>
+<p>We embed videos from external providers like YouTube to demonstrate AI tools. Loading these videos may share data with those providers according to their own privacy policies.</p>
+  </div>
+</section>
+<section id="46-song-genres" class="page-break">
+  <div class="section-header">
+    <span class="section-badge">46</span>
+    <h1 class="section-title">46 Song Genres for Suno</h1>
+    <p class="section-subtitle">Music genre prompt structure for Suno and other AI music generators.</p>
+  </div>
+  <div class="section-body">
+<p>A cheat sheet of 46 song genres and subgenres for [music generators](https://aiinjection.com/go/music). A list of easy-to-copy/paste prompts for you.</p>
+<h2>Pop</h2>
+<p>Audio Player</p>
+<p>00:00</p>
+<p>00:00</p>
+<p>02:19</p>
+<p>Use Up/Down Arrow keys to increase or decrease volume.</p>
+<p>115 BPM upbeat modern pop, catchy synth hooks, driving four-on-the-floor beat, sparkling and polished production, bright and energetic female vocal, soaring chorus, infectious melody, radio-friendly commercial sound.</p>
+<h2>Post-Disco & Boogie</h2>
+<p>Audio Player</p>
+<p>00:00</p>
+<p>00:00</p>
+<p>03:00</p>
+<p>Use Up/Down Arrow keys to increase or decrease volume.</p>
+<p>Mid-tempo 110 BPM post-disco boogie, stripped-down groove, thick synthesized bassline, crisp analog drum machine, funky rhythm guitar scratches, soulful male vocal with smooth falsetto harmonies, upbeat and danceable club vibe, tight and polished production</p>
+<h2>Italo Disco</h2>
+<p>Audio Player</p>
+<p>00:00</p>
+<p>00:00</p>
+<p>03:19</p>
+<p>Use Up/Down Arrow keys to increase or decrease volume.</p>
+<p>120 BPM classic Italo Disco, heavily sequenced synthesizer melodies, driving four-on-the-floor kick drum, futuristic and slightly melancholic atmosphere, dramatic female vocal with heavy delay, rich chorused synth pads, robotic vocoder backing, nostalgic European dance club energy</p>
+<h2>Synthwave</h2>
+<p>Audio Player</p>
+<p>00:00</p>
+<p>00:00</p>
+<p>03:50</p>
+<p>Use Up/Down Arrow keys to increase or decrease volume.</p>
+<p>90 BPM retro synthwave, neon-soaked cinematic atmosphere, pulsing 80s bass sequencer, massive gated-reverb snare drums, soaring analog synth lead, nostalgic and driving nighttime aesthetic, breathy male vocal with a cool and detached delivery, 1980s action movie soundtrack vibe</p>
+<h2>City Pop</h2>
+<p>Audio Player</p>
+<p>00:00</p>
+<p>00:00</p>
+<p>03:01</p>
+<p>Use Up/Down Arrow keys to increase or decrease volume.</p>
+<p>115 BPM 1980s Japanese City Pop, breezy and sophisticated blend of disco funk and light jazz, bright brass section stabs, slappy bass guitar, sparkling electric piano, smooth and joyful female vocal, affluent urban summer night vibe, lush and pristine orchestration</p>
+<h2>Rock</h2>
+<p>Audio Player</p>
+<p>00:00</p>
+<p>00:00</p>
+<p>02:44</p>
+<p>Use Up/Down Arrow keys to increase or decrease volume.</p>
+<p>130 BPM energetic hard rock, thick distorted rhythm guitars, driving bassline, heavy acoustic drums with crashing cymbals, gritty and powerful male vocal, anthemic chorus, raw and rebellious stadium energy</p>
+<h2>Post-Punk</h2>
+<p>Audio Player</p>
+<p>00:00</p>
+<p>00:00</p>
+<p>04:21</p>
+<p>Use Up/Down Arrow keys to increase or decrease volume.</p>
+<p>140 BPM driving post-punk, cold and angular chorus-drenched guitar riffs, prominent melodic bassline playing high on the neck, rigid and mechanical drum beat, gloomy atmospheric synths, deep baritone male vocal delivering stark and introspective lyrics, dark and brooding energy</p>
+<h2>Shoegaze</h2>
+<p>Audio Player</p>
+<p>00:00</p>
+<p>00:00</p>
+<p>04:09</p>
+<p>Use Up/Down Arrow keys to increase or decrease volume.</p>
+<p>95 BPM ethereal shoegaze, massive wall of sound, heavily distorted and reverb-drenched gliding guitars, buried and hazy drum groove, hypnotic and dreamlike atmosphere, androgynous whispered vocals melting into the instrumentation, dense and emotional sonic wash</p>
+<h2>Math Rock</h2>
+<p>Audio Player</p>
+<p>00:00</p>
+<p>00:00</p>
+<p>02:38</p>
+<p>Use Up/Down Arrow keys to increase or decrease volume.</p>
+<p>150 BPM energetic math rock, complex and shifting time signatures, clean and extremely intricate tapping guitar riffs, punchy stop-start dynamics, nimble and busy drumming, upbeat and bright indie-pop atmosphere, instrumental focus with occasional energetic vocal shouts</p>
+<h2>Hip-Hop</h2>
+<p>Audio Player</p>
+<p>00:00</p>
+<p>00:00</p>
+<p>02:15</p>
+<p>Use Up/Down Arrow keys to increase or decrease volume.</p>
+<p>90 BPM modern hip-hop, heavy 808 sub-bass, crisp trap hi-hats, dark and moody piano loop, aggressive and confident male rap vocal, punchy delivery, swaggering urban atmosphere, trunk-rattling beat</p>
+<h2>G-Funk</h2>
+<p>Audio Player</p>
+<p>00:00</p>
+<p>00:00</p>
+<p>03:32</p>
+<p>Use Up/Down Arrow keys to increase or decrease volume.</p>
+<p>95 BPM classic West Coast G-Funk, slow and hypnotic bouncing groove, deep Moog bassline, high-pitched whining synthesizer lead, laid-back heavy drum beat, smooth and confident male rap delivery, swaggering and cinematic gangsta rap atmosphere, funky rhythm guitar loops</p>
+<h2>Boom Bap</h2>
+<p>Audio Player</p>
+<p>00:00</p>
+<p>00:00</p>
+<p>02:50</p>
+<p>Use Up/Down Arrow keys to increase or decrease volume.</p>
+<p>85 BPM golden era East Coast Boom Bap, hard-hitting and dusty acoustic drum break, chopped and pitched-up vintage soul sample, crackling vinyl texture, gritty underground atmosphere, aggressive and highly rhythmic male rap vocal with intricate rhyme schemes, raw and loop-based</p>
+<h2>Industrial/Cyberpunk</h2>
+<p>Audio Player</p>
+<p>00:00</p>
+<p>00:00</p>
+<p>02:37</p>
+<p>Use Up/Down Arrow keys to increase or decrease volume.</p>
+<p>Industrial Hip-Hop / Electro-Punk, 130 BPM. Crushing distorted bass, relentless electronic drums, metallic synth stabs, and abrasive textures. Features a powerful, experienced female vocal with a subtle Asian accent, delivering confident, aggressive rap/sung lines and defiant shouts.</p>
+<h2>Electronic & Dance (EDM)</h2>
+<p>Audio Player</p>
+<p>00:00</p>
+<p>00:00</p>
+<p>03:19</p>
+<p>Use Up/Down Arrow keys to increase or decrease volume.</p>
+<p>128 BPM festival EDM, massive synthesized bass drops, euphoric and bright synth leads, relentless driving kick drum, energetic and uplifting atmosphere, breathy female vocal building to an explosive instrumental chorus</p>
+<h2>R&B & Soul</h2>
+<p>Audio Player</p>
+<p>00:00</p>
+<p>00:00</p>
+<p>02:49</p>
+<p>Use Up/Down Arrow keys to increase or decrease volume.</p>
+<p>85 BPM contemporary R&B, smooth and sultry electric piano, deep and warm bassline, tight snapping drum groove, incredibly emotive and silky female vocal with lush harmonies, romantic and intimate midnight vibe</p>
+<h2>Quiet Storm</h2>
+<p>Audio Player</p>
+<p>00:00</p>
+<p>00:00</p>
+<p>03:52</p>
+<p>Use Up/Down Arrow keys to increase or decrease volume.</p>
+<p>70 BPM late-night quiet storm R&B, incredibly smooth and mellow groove, lush electric piano chords, sensual tenor saxophone solo, slow and romantic tempo, silky and deeply emotive female vocal with rich harmonic layering, intimate and luxurious midnight atmosphere</p>
+<h2>Country (The Happy Jamboree)</h2>
+<p>Audio Player</p>
+<p>00:00</p>
+<p>00:00</p>
+<p>02:51</p>
+<p>Use Up/Down Arrow keys to increase or decrease volume.</p>
+<p>130 BPM upbeat classic country, fast rolling banjo, bright acoustic guitar strumming, energetic lively fiddle, happy male vocal with a thick southern twang, toe-tapping upright bass rhythm, joyful and cheerful atmosphere, authentic country sound, zero pop</p>
+<h2>Outlaw Country</h2>
+<p>Audio Player</p>
+<p>00:00</p>
+<p>00:00</p>
+<p>03:31</p>
+<p>Use Up/Down Arrow keys to increase or decrease volume.</p>
+<p>110 BPM 1970s outlaw honky-tonk, gritty male vocal with a heavy southern drawl, crying pedal steel guitar, walking upright bass rhythm, traditional acoustic rhythm guitar, shuffling snare played with brushes, sawdust dive bar atmosphere, raw analog recording, zero pop elements</p>
+<h2>The High-Energy Bluegrass</h2>
+<p>Audio Player</p>
+<p>00:00</p>
+<p>00:00</p>
+<p>02:13</p>
+<p>Use Up/Down Arrow keys to increase or decrease volume.</p>
+<p>140 BPM driving bluegrass country, frantic fingerpicked banjo, fast acoustic guitar, rhythmic washboard and snare, high-energy group vocal harmonies, foot-stomping rhythm, bright and lively Americana vibe, unmistakable traditional country</p>
+<h2>Jazz</h2>
+<p>Audio Player</p>
+<p>00:00</p>
+<p>00:00</p>
+<p>02:33</p>
+<p>Use Up/Down Arrow keys to increase or decrease volume.</p>
+<p>140 BPM lively swing jazz, walking upright bassline, energetic acoustic drumkit with ride cymbal focus, blaring brass section, virtuosic piano comping, smooth and sophisticated female vocal, smokey 1940s nightclub vibe</p>
+<h2>Classical</h2>
+<p>Audio Player</p>
+<p>00:00</p>
+<p>00:00</p>
+<p>04:04</p>
+<p>Use Up/Down Arrow keys to increase or decrease volume.</p>
+<p>60 BPM majestic orchestral classical, sweeping and emotional string section, thunderous timpani, triumphant brass fanfare, grand and cinematic atmosphere, soaring operatic soprano vocal, dramatic and highly dynamic arrangement</p>
+<h2>Classical (soprano aria)</h2>
+<p>Audio Player</p>
+<p>00:00</p>
+<p>00:00</p>
+<p>04:42</p>
+<p>Use Up/Down Arrow keys to increase or decrease volume.</p>
+<p>75 BPM classical soprano aria, grand orchestral backing, sweeping string section, expressive and emotional female operatic vocal, soaring high notes, rich acoustic hall reverb, majestic and dramatic atmosphere, cinematic scale</p>
+<h2>Classical (classical crossover)</h2>
+<p>Audio Player</p>
+<p>00:00</p>
+<p>00:00</p>
+<p>03:37</p>
+<p>Use Up/Down Arrow keys to increase or decrease volume.</p>
+<p>65 BPM classical crossover song, warm tenor male vocal, gentle grand piano, lush cello accompaniment, romantic and intimate melody, cinematic string crescendo, deeply emotional and powerful delivery, cinematic soundtrack vibe</p>
+<h2>Classical Duet</h2>
+<p>Audio Player</p>
+<p>00:00</p>
+<p>00:00</p>
+<p>03:39</p>
+<p>Use Up/Down Arrow keys to increase or decrease volume.</p>
+<p>70 BPM classical crossover duet, powerful male tenor and soaring female soprano singing together, grand piano, sweeping cinematic strings, dramatic orchestral crescendo, highly emotional and romantic atmosphere, epic climax, accessible pop structure</p>
+<h2>Folk & Traditional</h2>
+<p>Audio Player</p>
+<p>00:00</p>
+<p>00:00</p>
+<p>03:13</p>
+<p>Use Up/Down Arrow keys to increase or decrease volume.</p>
+<p>80 BPM intimate acoustic folk, intricate fingerpicked acoustic guitar, warm and resonant cello backing, soft and earthy tambourine, gentle and raspy male vocal, raw and vulnerable storytelling, rustic and organic campfire vibe</p>
+<h2>Latin</h2>
+<p>Audio Player</p>
+<p>00:00</p>
+<p>00:00</p>
+<p>02:26</p>
+<p>Use Up/Down Arrow keys to increase or decrease volume.</p>
+<p>105 BPM vibrant Latin pop, infectious reggaeton dembow rhythm, punchy synthesized bass, bright acoustic nylon-string guitar riffs, passionate and rhythmic Spanish female vocal, highly danceable and tropical summer party energy</p>
+<h2>Reggae & Caribbean</h2>
+<p>Audio Player</p>
+<p>00:00</p>
+<p>00:00</p>
+<p>04:11</p>
+<p>Use Up/Down Arrow keys to increase or decrease volume.</p>
+<p>75 BPM classic roots reggae, deep and heavy dub bassline, offbeat skanking guitar chords, relaxed one-drop drum rhythm, soulful and socially conscious male vocal, warm and sun-drenched Jamaican atmosphere</p>
+<h2>Blues</h2>
+<p>Audio Player</p>
+<p>00:00</p>
+<p>00:00</p>
+<p>03:57</p>
+<p>Use Up/Down Arrow keys to increase or decrease volume.</p>
+<p>65 BPM slow and heavy electric blues, crying distorted guitar solos with heavy vibrato, shuffling drum groove, grooving bass, gritty and whiskey-soaked male vocal, deeply emotional and melancholic Chicago bar vibe</p>
+<h2>Metal</h2>
+<p>Audio Player</p>
+<p>00:00</p>
+<p>00:00</p>
+<p>04:11</p>
+<p>Use Up/Down Arrow keys to increase or decrease volume.</p>
+<p>115 BPM heavy metal, thick and aggressive distorted guitar riffs, heavy driving bass guitar, thunderous acoustic drums with prominent double kick drum, gritty and powerful clean male vocal with occasional raspy shouts, anthemic and stadium-filling chorus, loud and dynamic production, rebellious and dark energy</p>
+<h2>Traditional Heavy Metal</h2>
+<p>Audio Player</p>
+<p>00:00</p>
+<p>00:00</p>
+<p>04:47</p>
+<p>Use Up/Down Arrow keys to increase or decrease volume.</p>
+<p>120 BPM traditional heavy metal, galloping bassline, iconic dual electric guitar harmony, driving acoustic drums with heavy cymbal crashes, soaring clean male vocal with high-pitched wails, anthemic chorus, classic 1980s metal production, epic and energetic atmosphere</p>
+<h2>Death Metal</h2>
+<p>Audio Player</p>
+<p>00:00</p>
+<p>00:00</p>
+<p>03:57</p>
+<p>Use Up/Down Arrow keys to increase or decrease volume.</p>
+<p>160 BPM brutal death metal, rapid blast beat drumming, heavily down-tuned and heavily distorted guitars, complex and highly technical song structure, deep guttural demonic growls, dark and aggressive atmosphere, crushing and intense sonic weight, fast and percussive</p>
+<h2>Black Metal</h2>
+<p>Audio Player</p>
+<p>00:00</p>
+<p>00:00</p>
+<p>04:11</p>
+<p>Use Up/Down Arrow keys to increase or decrease volume.</p>
+<p>180 BPM atmospheric black metal, relentless tremolo picking on highly distorted guitars, continuous fast blast beats, high-pitched shrieking vocal, cold and eerie atmosphere, raw and intentionally unpolished lo-fi production, dark and abrasive wall of sound</p>
+<h2>Thrash Metal</h2>
+<p>Audio Player</p>
+<p>00:00</p>
+<p>00:00</p>
+<p>04:04</p>
+<p>Use Up/Down Arrow keys to increase or decrease volume.</p>
+<p>180 BPM aggressive thrash metal, lightning-fast palm-muted guitar riffs, frantic double-bass drumming, raw and unpolished production, furious and energetic, shouting male vocal delivering fast and rebellious lyrics, blistering guitar solo, intense headbanging rhythm</p>
+<h2>Djent</h2>
+<p>Audio Player</p>
+<p>00:00</p>
+<p>00:00</p>
+<p>04:15</p>
+<p>Use Up/Down Arrow keys to increase or decrease volume.</p>
+<p>130 BPM modern djent and progressive metal, heavily down-tuned and aggressively palm-muted elastic guitar chugs, complex syncopated polyrhythms, sharp and punchy drum production, massive atmospheric synth layers underneath, alternating harsh demonic growls and soaring clean male vocals, technical and crushing</p>
+<h2>Progressive Death Metal</h2>
+<p>Audio Player</p>
+<p>00:00</p>
+<p>00:00</p>
+<p>04:07</p>
+<p>Use Up/Down Arrow keys to increase or decrease volume.</p>
+<p>Aggressive progressive death metal, 120 BPM, Complex drums, distorted guitars, deep bass, Female vocal, demonic growls and screams, intense and dark with infernal energy and technical precision</p>
+<h2>Balkan & East. European Romani</h2>
+<p>Audio Player</p>
+<p>00:00</p>
+<p>00:00</p>
+<p>03:29</p>
+<p>Use Up/Down Arrow keys to increase or decrease volume.</p>
+<p>130 BPM Balkan Romani brass band, frantic acoustic accordion, blazing trumpet solos, heavy driving tuba bassline, upbeat and frenetic dance energy, joyful acoustic village celebration, zero electronic instruments</p>
+<h2>Flamenco (Spain)</h2>
+<p>Audio Player</p>
+<p>00:00</p>
+<p>00:00</p>
+<p>02:52</p>
+<p>Use Up/Down Arrow keys to increase or decrease volume.</p>
+<p>100 BPM traditional Flamenco, passionate and gritty Spanish male vocal, intricate and fast acoustic guitar fingerpicking, rhythmic hand-clapping, dramatic and emotional atmosphere, fiery and percussive</p>
+<h2>Gypsy Jazz (France)</h2>
+<p>Audio Player</p>
+<p>00:00</p>
+<p>00:00</p>
+<p>02:59</p>
+<p>Use Up/Down Arrow keys to increase or decrease volume.</p>
+<p>140 BPM acoustic Gypsy Jazz, 1930s swing rhythm, lightning-fast acoustic guitar soloing, driving upright bass, rhythmic acoustic rhythm guitar, upbeat Parisian cafe atmosphere, no drums, purely acoustic</p>
+<h2>Irish Pub</h2>
+<p>Audio Player</p>
+<p>00:00</p>
+<p>00:00</p>
+<p>02:49</p>
+<p>Use Up/Down Arrow keys to increase or decrease volume.</p>
+<p>130 BPM traditional Irish pub song, thick authentic Irish accent, raw male solo vocal, single lead singer, absolutely no group vocals, no backing vocals, fast driving fiddle, lively tin whistle, energetic acoustic rhythm guitar, heavy rhythmic bodhran drum, foot-stomping atmosphere, authentic Celtic folk, zero American pop influence</p>
+<h2>Irish lament ballad</h2>
+<p>Audio Player</p>
+<p>00:00</p>
+<p>00:00</p>
+<p>03:34</p>
+<p>Use Up/Down Arrow keys to increase or decrease volume.</p>
+<p>65 BPM traditional Irish lament ballad, thick authentic Irish accent, pure and ethereal female solo vocal, single lead singer, absolutely no group vocals, no backing vocals, traditional Celtic pronunciation, gentle Celtic harp, haunting Uilleann pipes, slow and mournful acoustic melody, deep emotional resonance, purely acoustic</p>
+<h2>Arabic Deep Traditional Acoustic</h2>
+<p>Audio Player</p>
+<p>00:00</p>
+<p>00:00</p>
+<p>04:57</p>
+<p>Use Up/Down Arrow keys to increase or decrease volume.</p>
+<p>80 BPM traditional Arabic classical music, highly emotional male vocal, complex microtonal singing, intricate acoustic oud, haunting ney flute, steady darbuka drum, deep tarab atmosphere, authentic Middle Eastern maqam scale, purely acoustic, zero Western pop elements</p>
+<h2>Arabic High-Energy Street Dance</h2>
+<p>Audio Player</p>
+<p>00:00</p>
+<p>00:00</p>
+<p>02:14</p>
+<p>Use Up/Down Arrow keys to increase or decrease volume.</p>
+<p>120 BPM energetic Arabic Shaabi music, powerful female vocal, fast and hypnotic darbuka percussion, bright electric saz, driving synthesizer melodies, upbeat street dance rhythm, vibrant and festive Middle Eastern atmosphere, highly rhythmic</p>
+<h2>Bollywood</h2>
+<p>Audio Player</p>
+<p>00:00</p>
+<p>00:00</p>
+<p>03:14</p>
+<p>Use Up/Down Arrow keys to increase or decrease volume.</p>
+<p>120 BPM energetic Bollywood filmi music, joyful and agile female playback vocal, massive driving dholak drum rhythm, sweeping cinematic strings, bright melodic harmonium, festive and vibrant atmosphere, classic Indian cinema sound, zero western pop elements</p>
+<h2>Traditional Hindustani Classical</h2>
+<p>Audio Player</p>
+<p>00:00</p>
+<p>00:00</p>
+<p>04:12</p>
+<p>Use Up/Down Arrow keys to increase or decrease volume.</p>
+<p>70 BPM traditional Hindustani classical, deep male vocal singing complex ragas, intricate acoustic sitar melody, rhythmic tabla drums, steady tambura drone, meditative and spiritual atmosphere, authentic Indian classical phrasing, strictly acoustic, no modern synthesizers</p>
+<h2>RAP (Melodic) – Prompt + Modified Lyrics</h2>
+<p>Audio Player</p>
+<p>00:00</p>
+<p>00:00</p>
+<p>02:22</p>
+<p>Use Up/Down Arrow keys to increase or decrease volume.</p>
+<p>90 BPM hardcore rap, heavy boom bap drum beat, deep sub bass, dry spoken vocal, aggressive male rap delivery, rhythmic scratching, dark urban atmosphere, authentic hip hop, purely spoken word, zero melodic singing</p>
+<p>\[Spoken Verse 1\]</p>
+<p>The sun goes down. Shadows fall.</p>
+<p>Hear the echoes. Through the wall.</p>
+<p>Carried weight. I couldn't hold.</p>
+<p>Summer heat. Winter cold.</p>
+<p>\[Hard Hook\]</p>
+<p>FIRE. BURNING DEEP INSIDE.</p>
+<p>Nowhere to run. Nowhere to hide.</p>
+<p>BREAK THE CHAINS. BREAKING THROUGH.</p>
+<p>Yeah. Walking out to something new.</p>
+<p>\[Fast Rap Verse 2\]</p>
+<p>Heavy rain. Bitter wind.</p>
+<p>Can't forget. The places I've been.</p>
+<p>City lights. Open sky.</p>
+<p>Keep on moving. Till I die.</p>
+<p>\[Hard Hook\]</p>
+<p>FIRE. BURNING DEEP INSIDE.</p>
+<p>Nowhere to run. Nowhere to hide.</p>
+<p>BREAK THE CHAINS. BREAKING THROUGH.</p>
+<p>Yeah. Walking out to something new.</p>
+<p>\[Beat Drop\]</p>
+<p>Time is ticking. Clock spins around.</p>
+<p>Look to the sky. Tied to the ground.</p>
+<p>HEAR MY VOICE. CALLING OUT.</p>
+<p>TEARING IT DOWN. REMOVING DOUBT.</p>
+<p>\[Instrumental Scratch Break\]</p>
+<p>\[Hard Hook\]</p>
+<p>FIRE. BURNING DEEP INSIDE.</p>
+<p>Nowhere to run. Nowhere to hide.</p>
+<p>BREAK THE CHAINS. BREAKING THROUGH.</p>
+<p>Yeah. Walking out to something new.</p>
+<p>\[Acapella Outro\]</p>
+<p>Out in the night. Catch the spark.</p>
+<p>Leave a mark. In the dark.</p>
+<p>BREAK THE CHAINS. BREAKING THROUGH.</p>
+<p>Walking out. Something new.</p>
+<p>\[End\]</p>
+<h2>RAP – Prompt + Asymmetrical Lyrics</h2>
+<p>Audio Player</p>
+<p>00:00</p>
+<p>00:00</p>
+<p>01:44</p>
+<p>Use Up/Down Arrow keys to increase or decrease volume.</p>
+<p>90 BPM spoken word hip hop, slam poetry over heavy boom bap, aggressive spoken delivery, strictly rhythmic talking, raw underground cypher, zero melody, no singing, dry vocal, gritty urban beat</p>
+<p>\[Spoken Word Intro\]</p>
+<p>Yeah. Look.</p>
+<p>Sun's dropping down... watch the shadows just fall.</p>
+<p>I'm hearing every single echo bleeding right through this wall.</p>
+<p>\[Verse 1\]</p>
+<p>Listen, I've been carrying this weight, man, stuff I couldn't even hold.</p>
+<p>Through the boiling summer heat. Through the freezing winter cold.</p>
+<p>It's heavy.</p>
+<p>Yeah.</p>
+<p>\[Rhythmic Hook\]</p>
+<p>Fire. It's burning deep down inside me.</p>
+<p>Got nowhere left to run. Got nowhere to hide, see?</p>
+<p>I'm breaking these chains, yeah, I'm finally breaking through.</p>
+<p>Stepping out the front door. Walking into something new.</p>
+<p>\[Verse 2\]</p>
+<p>Heavy rain falling down, feeling that bitter wind blowing.</p>
+<p>Can't forget the past places I've been, but I know where I'm going.</p>
+<p>City lights blinding me. Open sky above my head.</p>
+<p>I'm gonna keep on moving forward till the day that I'm dead.</p>
+<p>Look.</p>
+<p>\[Rhythmic Hook\]</p>
+<p>Fire. It's burning deep down inside me.</p>
+<p>Got nowhere left to run. Got nowhere to hide, see?</p>
+<p>I'm breaking these chains, yeah, I'm finally breaking through.</p>
+<p>Stepping out the front door. Walking into something new.</p>
+<p>\[Beat Drop\]</p>
+<p>Time keeps ticking on. Clock just spins around.</p>
+<p>Looking up at the sky but my feet are chained to the ground.</p>
+<p>Hear my voice now. I'm calling it out loud.</p>
+<p>Tearing the whole thing down. Removing every single doubt.</p>
+<p>\[Outro Cypher\]</p>
+<p>Out in the night. Catch the spark.</p>
+<p>Leave my mark out here in the dark.</p>
+<p>Yeah.</p>
+<p>Breaking the chains. Breaking through.</p>
+<p>Something new.</p>
+<p>\[End\]</p>
+<h2>Want to Create Viral Videos Like These? 👇</h2>
+<p>Sorry, your browser doesn't support embedded videos.</p>
+<p>Sorry, your browser doesn't support embedded videos.</p>
+<p>Sorry, your browser doesn't support embedded videos.</p>
+<p>Sorry, your browser doesn't support embedded videos.</p>
+<p>Sorry, your browser doesn't support embedded videos.</p>
+<p>Sorry, your browser doesn't support embedded videos.</p>
+<h2>Stop guessing. Get the step-by-step guides to mastering AI content.</h2>
+<p>Inside Ai School, you’ll get to know the exact Ai Workflows and detailed guides on how to make real $$ with Ai Content.</p>
+<p>PLUS you also get:</p>
+<p>✅ Prompt Vault: Copy/Paste exact Viral Prompts</p>
+<p>✅ Daily Trend Alert: Never miss out on Viral Trends</p>
+<p>✅ VIP Network: Access to Top 0.1% 1B+ views Creators</p>
+<p>✅ Step by Step Ai Course: Video Tutorials and Guides</p>
+<p>![AI Injection footer logo](https://aiinjection.com/wp-content/uploads/2026/01/logo-footer.webp)</p>
+<p>Limerick, Ireland</p>
+<p>mail@aiinjection.com</p>
+<h4>Learn AI</h4>
+<p>Join the best communities to learn AI content creation. Top free and paid groups for AI video, image generation, automation, and earning online.</p>
+<h4>AI Toolset</h4>
+<p>AI Injection AI Toolset featuring ElevenLabs, FlexClip, and MindStudio. Access the best tools for audio, video, and AI development to scale your content.</p>
+<p>© 2026 AI Injection • [Privacy Policy](https://aiinjection.com/privacy-policy/) • [Cookie Policy](https://aiinjection.com/cookie-policy/) • [Disclaimer](https://aiinjection.com/disclaimer/) • [TOS](https://aiinjection.com/terms-of-service/)</p>
+<p>Search for:</p>
+<p>We use cookies to analyze our traffic, personalize content, and provide social media features. You can choose to accept all or manage your preferences in the [settings](https://aiinjection.com/song-genres-and-subgenres-prompts/#)[Accept](https://aiinjection.com/song-genres-and-subgenres-prompts/#)</p>
+<h4>Analytics & Performance</h4>
+<p>We use tools like Google Analytics to understand how visitors interact with our website. This helps us improve our tutorials and user experience. All data is anonymized.</p>
+<h4>Video Embeds</h4>
+<p>We embed videos from external providers like YouTube to demonstrate AI tools. Loading these videos may share data with those providers according to their own privacy policies.</p>
+  </div>
+</section>
+<section id="viral-video-transitions" class="page-break">
+  <div class="section-header">
+    <span class="section-badge">Viral</span>
+    <h1 class="section-title">Viral Video Transitions</h1>
+    <p class="section-subtitle">Transition prompts for short-form video.</p>
+  </div>
+  <div class="section-body">
+<p>A cheat sheet of transition prompts used by creators of those viral **YouTube** and **TikTok** videos you see every day. Brought to you by [AI School](https://aiinjection.com/go/aischool).</p>
+<h2>Subtle Smile</h2>
+<p>Two characters stand very close together, as if having a conversation. The first character looks forward for one second, then smiles subtlety at the second character as the camera pans right to reveal them. The second character, now visible on the right, looks at the first character’s face subtlety smiles at them for a second, then turns their head to face the camera in the final second. The camera remains at a fixed height with a continuous rightward pan and no cuts.</p>
+<h2>Hair Touch</h2>
+<p>Two characters stand very close together, as if having a conversation. The first character looks forward for one second, then smiles warmly at the second character, as the camera pans right to reveal them. The second character, now visible on the right, looks at the first character’s face and pets the hair of the first character with adoring face, smiles at them for a second, then turns their head to face the camera in the final second. The camera remains at a fixed height with a continuous rightward pan and no cuts.</p>
+<h2>Arm Grap</h2>
+<p>Two characters stand very close together, as if having a conversation. The first character looks forward for one second, then smiles warmly at the second character as the camera pans right to reveal them. The first character grabs the second character's arm with their hand, smiles at them warmly for few seconds. The second character smiles at the first character. The camera remains at a fixed height with a continuous rightward pan and no cuts.</p>
+<h2>Kiss on the Cheek</h2>
+<p>Two characters stand very close together, as if having a conversation. The first character smiles warmly at the second character. As the camera pans right to reveal them, the first character leans and kisses the second character on the cheek. The second character, now visible on the right, looks at the first character in slight bewilderment, smiles at them for a second, then turns their head to face the camera in the final second. The camera remains at a fixed height with a continuous rightward pan and no cuts.</p>
+<h2>Tapping on the Arm</h2>
+<p>Two characters stand very close together, as if having a conversation (no talking). The first character looks forward for one second, then smiles warmly at the second character as the camera pans right to reveal them. The second character playfully taps the first character's arm and smiles at them for a second. The camera remains at a fixed height with a continuous rightward pan and no cuts.</p>
+<h2>Arm Around the Shoulders</h2>
+<p>The Camera pans to the right, revealing the second character. He puts an arm around the shoulder of the first character and smiles brightly at him. The First character smiles warmly at the second character as well. The first character turns his head right as the Camera pans right.</p>
+<h2>Second Character on Action</h2>
+<p>Two characters stand next to each other. The first character turns his head to the right and smiles as the camera pans right to reveal the second character, who is proudly raising his medal.</p>
+<h2>Fist Bump</h2>
+<p>Two characters stand very close together, as if having a conversation. The first character looks at the second character. As the camera pans right to reveal them, they both perform the fist bump. The camera remains at a fixed height with a continuous rightward pan and no cuts.</p>
+<h2>Pat on the Back</h2>
+<p>The Camera pans to the right, revealing the second character. He pats the back of the first character as if he is proud of him and smiles warmly at him. The First character smiles at the second character as well. The first character turns his head right as the Camera pans right.</p>
+<h2>Shoulder Touch</h2>
+<p>The second character touches the shoulder of the first character, and they smiles warmly at each other while the camera pans to the right, revealing the second character. The first character turns his head right as the Camera pans right.</p>
+<h2>Want to Create Viral Videos Like These? 👇</h2>
+<p>Sorry, your browser doesn't support embedded videos.</p>
+<p>Sorry, your browser doesn't support embedded videos.</p>
+<p>Sorry, your browser doesn't support embedded videos.</p>
+<p>Sorry, your browser doesn't support embedded videos.</p>
+<p>Sorry, your browser doesn't support embedded videos.</p>
+<p>Sorry, your browser doesn't support embedded videos.</p>
+<h2>Stop guessing. Get the step-by-step guides to mastering AI content.</h2>
+<p>Inside Ai School, you’ll get to know the exact Ai Workflows and detailed guides on how to make real $$ with Ai Content.</p>
+<p>PLUS you also get:</p>
+<p>✅ Prompt Vault: Copy/Paste exact Viral Prompts</p>
+<p>✅ Daily Trend Alert: Never miss out on Viral Trends</p>
+<p>✅ VIP Network: Access to Top 0.1% 1B+ views Creators</p>
+<p>✅ Step by Step Ai Course: Video Tutorials and Guides</p>
+<p>![AI Injection footer logo](https://aiinjection.com/wp-content/uploads/2026/01/logo-footer.webp)</p>
+<p>Limerick, Ireland</p>
+<p>mail@aiinjection.com</p>
+<h4>Learn AI</h4>
+<p>Join the best communities to learn AI content creation. Top free and paid groups for AI video, image generation, automation, and earning online.</p>
+<h4>AI Toolset</h4>
+<p>AI Injection AI Toolset featuring ElevenLabs, FlexClip, and MindStudio. Access the best tools for audio, video, and AI development to scale your content.</p>
+<p>© 2026 AI Injection • [Privacy Policy](https://aiinjection.com/privacy-policy/) • [Cookie Policy](https://aiinjection.com/cookie-policy/) • [Disclaimer](https://aiinjection.com/disclaimer/) • [TOS](https://aiinjection.com/terms-of-service/)</p>
+<p>Search for:</p>
+<p>We use cookies to analyze our traffic, personalize content, and provide social media features. You can choose to accept all or manage your preferences in the [settings](https://aiinjection.com/viral-video-transitions/#)[Accept](https://aiinjection.com/viral-video-transitions/#)</p>
+<h4>Analytics & Performance</h4>
+<p>We use tools like Google Analytics to understand how visitors interact with our website. This helps us improve our tutorials and user experience. All data is anonymized.</p>
+<h4>Video Embeds</h4>
+<p>We embed videos from external providers like YouTube to demonstrate AI tools. Loading these videos may share data with those providers according to their own privacy policies.</p>
+<p>×</p>
+  </div>
+</section>
+<section id="text-to-video-prompt-structure" class="page-break">
+  <div class="section-header">
+    <span class="section-badge">Text-to-Video</span>
+    <h1 class="section-title">Text-to-Video Prompt Structure</h1>
+    <p class="section-subtitle">How to structure prompts that work.</p>
+  </div>
+  <div class="section-body">
+<h2>Text Version (Continuous Block)</h2>
+<p>\[Visuals\] Neo-Noir, Cinematic 4k, 1950s Film Style. A grizzled detective sits behind a cluttered desk with a glass ashtray in a dim office. The room is filled with a thick, static atmospheric haze, but there are no visible cigarettes or smoke plumes. He leans forward, holding a photograph so the viewer sees ONLY the blank, white back of the photo paper. He lowers the photo, leans back in his creaking leather chair with a look of exhausted triumph, and speaks directly to the air. Medium Shot, Center Framed, Slow Dolly In, Slight Low Angle. Low Key, Chiaroscuro, Volumetric Lighting (God Rays), Hard Shadows. 50mm Anamorphic, f/2.8, Film Grain.</p>
+<p>\[Dialogue/Audio\] “I told you I’d find the loose thread.” (Spoken in a dry, gritty, monotone voice with exhausted relief). Audio should be silence, office room tone, hum of ventilation, and creaking chair only. NO MUSIC.</p>
+<p>Your prompt</p>
+<p>Style Reference</p>
+<p>Camera Composition</p>
+<p>Camera Motion</p>
+<p>Camera Angle</p>
+<p>Lighting</p>
+<p>Technical Lens</p>
+<h2>JSON Version</h2>
+<p>```</p>
+<p>{</p>
+<p>"global_parameters": {</p>
+<p>"style_reference": "Neo-Noir, 1950s Crime Drama, Photorealistic",</p>
+<p>"audio_ambiance": "Silence, office room tone, hum of ventilation, creaking chair, sound effects only, NO MUSIC"</p>
+<p>},</p>
+<p>"global_negative_prompt": [\</p>
+<p>"singing",\</p>
+<p>"musical",\</p>
+<p>"background music",\</p>
+<p>"musical score",\</p>
+<p>"soundtrack",\</p>
+<p>"melody",\</p>
+<p>"rap",\</p>
+<p>"floating cigarettes",\</p>
+<p>"visible photo image",\</p>
+<p>"smoke emitters",\</p>
+<p>"burning objects"\</p>
+<p>],</p>
+<p>"scene": [\</p>
+<p>{\</p>
+<p>"cinematic_prompt": {\</p>
+<p>"visual_details": "A grizzled detective sits behind a cluttered desk with a glass ashtray in a dim office. The room is filled with a thick, static atmospheric haze, but there are no visible cigarettes or smoke plumes. He leans forward, holding a photograph so the viewer sees ONLY the blank, white back of the photo paper. He lowers the photo, leans back in his creaking leather chair with a look of exhausted triumph, and speaks directly to the air.",\</p>
+<p>"camera": {\</p>
+<p>"composition": "Medium Shot, Center Framed",\</p>
+<p>"motion": "Slow Dolly In",\</p>
+<p>"angle": "Slight Low Angle"\</p>
+<p>},\</p>
+<p>"lighting": "Low Key, Chiaroscuro, Volumetric Lighting (God Rays), Hard Shadows",\</p>
+<p>"technical_lens": "50mm Anamorphic, f/2.8, Film Grain"\</p>
+<p>},\</p>
+<p>"dialogue": {\</p>
+<p>"speaker": "Detective",\</p>
+<p>"text": "I told you I’d find the loose thread.",\</p>
+<p>"emotion": "Exhausted relief, serious, flat",\</p>
+<p>"voice_style": "Dry spoken word, gritty speech, gravelly narration, monotone, conversational",\</p>
+<p>"timing_trigger": "After leaning back"\</p>
+<p>}\</p>
+<p>}\</p>
+<p>]</p>
+<p>}</p>
+<p>```</p>
+<p>Style & Background Audio Reference</p>
+<p>Negative Prompt</p>
+<p>Your prompt</p>
+<p>Camera Settings</p>
+<p>Lightning & Lens</p>
+<p>Dialogue</p>
+<h2>Want to Create Viral Videos Like These? 👇</h2>
+<p>Sorry, your browser doesn't support embedded videos.</p>
+<p>Sorry, your browser doesn't support embedded videos.</p>
+<p>Sorry, your browser doesn't support embedded videos.</p>
+<p>Sorry, your browser doesn't support embedded videos.</p>
+<p>Sorry, your browser doesn't support embedded videos.</p>
+<p>Sorry, your browser doesn't support embedded videos.</p>
+<h2>Stop guessing. Get the step-by-step guides to mastering AI content.</h2>
+<p>Inside Ai School, you’ll get to know the exact Ai Workflows and detailed guides on how to make real $$ with Ai Content.</p>
+<p>PLUS you also get:</p>
+<p>✅ Prompt Vault: Copy/Paste exact Viral Prompts</p>
+<p>✅ Daily Trend Alert: Never miss out on Viral Trends</p>
+<p>✅ VIP Network: Access to Top 0.1% 1B+ views Creators</p>
+<p>✅ Step by Step Ai Course: Video Tutorials and Guides</p>
+<p>![AI Injection footer logo](https://aiinjection.com/wp-content/uploads/2026/01/logo-footer.webp)</p>
+<p>Limerick, Ireland</p>
+<p>mail@aiinjection.com</p>
+<h4>Learn AI</h4>
+<p>Join the best communities to learn AI content creation. Top free and paid groups for AI video, image generation, automation, and earning online.</p>
+<h4>AI Toolset</h4>
+<p>AI Injection AI Toolset featuring ElevenLabs, FlexClip, and MindStudio. Access the best tools for audio, video, and AI development to scale your content.</p>
+<p>© 2026 AI Injection • [Privacy Policy](https://aiinjection.com/privacy-policy/) • [Cookie Policy](https://aiinjection.com/cookie-policy/) • [Disclaimer](https://aiinjection.com/disclaimer/) • [TOS](https://aiinjection.com/terms-of-service/)</p>
+<p>Search for:</p>
+<p>We use cookies to analyze our traffic, personalize content, and provide social media features. You can choose to accept all or manage your preferences in the [settings](https://aiinjection.com/text-to-video-prompt-structure/#)[Accept](https://aiinjection.com/text-to-video-prompt-structure/#)</p>
+<h4>Analytics & Performance</h4>
+<p>We use tools like Google Analytics to understand how visitors interact with our website. This helps us improve our tutorials and user experience. All data is anonymized.</p>
+<h4>Video Embeds</h4>
+<p>We embed videos from external providers like YouTube to demonstrate AI tools. Loading these videos may share data with those providers according to their own privacy policies.</p>
+  </div>
+</section>
+<section id="16-ai-image-generators" class="page-break">
+  <div class="section-header">
+    <span class="section-badge">16</span>
+    <h1 class="section-title">16 AI Image Generators</h1>
+    <p class="section-subtitle">Comparison and prompts for the best AI image tools.</p>
+  </div>
+  <div class="section-body">
+<h2>Nano Banana Pro (Flow)</h2>
+<h2>Grok</h2>
+<h2>ChatGPT</h2>
+<h2>ImagineArt 1.5 Pro</h2>
+<h2>Hunyuan Image 3 (FlexClip)</h2>
+<h2>Seedream 4.5 (Higgsfield)</h2>
+<h2>Flux Max (Higgsfield)</h2>
+<h2>Z Image (Higgsfield)</h2>
+<h2>Qwen Image (ImagineArt)</h2>
+<h2>Kling O1 Image (Higgsfield)</h2>
+<h2>Recraft 3</h2>
+<h2>Minimax-Hailuo</h2>
+<h2>Leonardo AI Lucid Origin</h2>
+<h2>Midjourney</h2>
+<h2>Ideogram v3 (ImagineArt)</h2>
+<h2>Wan 2.2 (Higgsfield)</h2>
+<p>![Nano Banana Pro (Flow)](https://aiinjection.com/wp-content/uploads/2026/02/1-Nano-Banana-Pro-Flow.webp)</p>
+<h2>Nano Banana Pro (Flow)</h2>
+<p>![Grok](https://aiinjection.com/wp-content/uploads/2026/02/2-Grok.webp)</p>
+<h2>Grok</h2>
+<p>![ChatGPT](https://aiinjection.com/wp-content/uploads/2026/02/3-ChatGPT.webp)</p>
+<h2>ChatGPT</h2>
+<p>![ImagineArt 1.5 Pro](https://aiinjection.com/wp-content/uploads/2026/02/4-ImagineArt-1.5-Pro.webp)</p>
+<h2>ImagineArt 1.5 Pro</h2>
+<p>![Hunyuan Image 3 (FlexClip)](https://aiinjection.com/wp-content/uploads/2026/02/5-Hunyuan-Image-3-FlexClip.webp)</p>
+<h2>Hunyuan Image 3 (FlexClip)</h2>
+<p>![Seedream 4.5 (Higgsfield)](https://aiinjection.com/wp-content/uploads/2026/02/6-Seedream-4.5-Higgsfield.webp)</p>
+<h2>Seedream 4.5 (Higgsfield)</h2>
+<p>![Flux Max (Higgsfield)](https://aiinjection.com/wp-content/uploads/2026/02/7-Flux-Max-Higgsfield.webp)</p>
+<h2>Flux Max (Higgsfield)</h2>
+<p>![Z Image (Higgsfield)](https://aiinjection.com/wp-content/uploads/2026/02/8-Z-Image-Higgsfield.webp)</p>
+<h2>Z Image (Higgsfield)</h2>
+<p>![Qwen Image (ImagineArt)](https://aiinjection.com/wp-content/uploads/2026/02/9-Qwen-Image-ImagineArt.webp)</p>
+<h2>Qwen Image (ImagineArt)</h2>
+<p>![Kling O1 Image (Higgsfield)](https://aiinjection.com/wp-content/uploads/2026/02/10-Kling-O1-Image-Higgsfield.webp)</p>
+<h2>Kling O1 Image (Higgsfield)</h2>
+<p>![Recraft 3](https://aiinjection.com/wp-content/uploads/2026/02/11-Recraft-3.webp)</p>
+<h2>Recraft 3</h2>
+<p>![Minimax-Hailuo](https://aiinjection.com/wp-content/uploads/2026/02/12-Minimax-Hailuo.webp)</p>
+<h2>Minimax-Hailuo</h2>
+<p>![Leonardo AI Lucid Origin](https://aiinjection.com/wp-content/uploads/2026/02/13-Leonardo-AI-Lucid-Origin.webp)</p>
+<h2>Leonardo AI Lucid Origin</h2>
+<p>![Midjourney](https://aiinjection.com/wp-content/uploads/2026/02/14-Midjourney.webp)</p>
+<h2>Midjourney</h2>
+<p>![Ideogram v3 (ImagineArt)](https://aiinjection.com/wp-content/uploads/2026/02/15-Ideogram-v3-ImagineArt.webp)</p>
+<h2>Ideogram v3 (ImagineArt)</h2>
+<p>![Wan 2.2 (Higgsfield)](https://aiinjection.com/wp-content/uploads/2026/02/16-Wan-2.2-Higgsfield.webp)</p>
+<h2>Wan 2.2 (Higgsfield)</h2>
+<p>![AI Injection footer logo](https://aiinjection.com/wp-content/uploads/2026/01/logo-footer.webp "logo-footer")</p>
+<p>Limerick, Ireland</p>
+<p>mail@aiinjection.com</p>
+<h4>Learn AI</h4>
+<p>Join the best communities to learn AI content creation. Top free and paid groups for AI video, image generation, automation, and earning online.</p>
+<h4>AI Toolset</h4>
+<p>AI Injection AI Toolset featuring ElevenLabs, FlexClip, and MindStudio. Access the best tools for audio, video, and AI development to scale your content.</p>
+<p>© 2026 AI Injection • [Privacy Policy](https://aiinjection.com/privacy-policy/) • [Cookie Policy](https://aiinjection.com/cookie-policy/) • [Disclaimer](https://aiinjection.com/disclaimer/) • [TOS](https://aiinjection.com/terms-of-service/)</p>
+<p>Page load link</p>
+<p>Search for:</p>
+<ul>
+<li>[Home](https://aiinjection.com/)</li>
+<li>[Shot Design](https://aiinjection.com/shot-design/)</li>
+<li>[Prompt Library](https://aiinjection.com/prompt-library/)</li>
+<li>[AI Toolset](https://aiinjection.com/ai-toolset/)</li>
+<li>[Learn AI](https://aiinjection.com/learn-ai/)</li>
+<li>[Download Music](https://aiinjection.com/music/)</li>
+</ul>
+<p>We use cookies to analyze our traffic, personalize content, and provide social media features. You can choose to accept all or manage your preferences in the settings</p>
+<p>Accept</p>
+<h4>Analytics & Performance</h4>
+<p>We use tools like Google Analytics to understand how visitors interact with our website. This helps us improve our tutorials and user experience. All data is anonymized.</p>
+<h4>Video Embeds</h4>
+<p>We embed videos from external providers like YouTube to demonstrate AI tools. Loading these videos may share data with those providers according to their own privacy policies.</p>
+<p>Go to Top</p>
+  </div>
+</section>
+<section id="elevenlabs-audio-tags" class="page-break">
+  <div class="section-header">
+    <span class="section-badge">ElevenLabs</span>
+    <h1 class="section-title">ElevenLabs Audio Tags</h1>
+    <p class="section-subtitle">Voice and emotion tags for AI speech synthesis.</p>
+  </div>
+  <div class="section-body">
+<p>Also known as Prompting Tags or Speech Control Tags, with the release of the ElevenLabs v3 model, these are known as Audio Tags.</p>
+<p>There isn’t a strict, finite dictionary because the AI model is trained to interpret natural language cues. You can often type any descriptive word or action in brackets, and the model will attempt to perform it. However, ElevenLabs has documented primary tags that the system reliably recognizes.</p>
+<h3>Voiceover with Audio Tags</h3>
+<p>![ElevenLabs audio tags list.](https://aiinjection.com/wp-content/uploads/2026/04/ElevenLabs-Audio-Tags-List.webp "ElevenLabs Audio Tags List")</p>
+<h3>Voiceover without Audio Tags</h3>
+<p>![](https://aiinjection.com/wp-content/uploads/2026/04/Standard-Voiceover.webp "Standard Voiceover")</p>
+<h2>1. Emotional Tone</h2>
+<p>These dictate the mood and feeling of the speaker’s delivery.</p>
+<p>**Tags**: [happy], [excited], [sad], [angry], [nervous], [frustrated], [tired], [curious], [mischievously], [serious], [confident], [ironic], [cheerful], [sorrowful]</p>
+<h2>2. Reactions & Non-Verbal Sounds</h2>
+<p>These insert human-like sounds and unscripted natural reactions into the audio.</p>
+<p>**Tags**: [laughs], [laughing], [laughs harder], [starts laughing], [wheezing], [sighs], [exhales], [crying], [clears throat], [gulps], [gasp], [breathes], [snorts]</p>
+<h2>3. Delivery Style & Volume</h2>
+<p>These adjust the energy, volume, and specific performance style of the read.</p>
+<p>**Tags**: [whispers], [whispering], [shouts], [shouting], [quietly], [loudly], [flatly], [monotone], [with expression], [sarcastic], [dramatic], [matter-of-fact], [whiny], [explaining]</p>
+<h2>4. Pacing & Timing</h2>
+<p>These tags manipulate the rhythm, speed, and flow of the speech.</p>
+<p>**Tags**: [pause], [long pause], [rushed], [slow], [slows down], [deliberate], [rapid-fire], [stammers], [drawn out], [repeats], [timidly], [continues after a beat]</p>
+<h2>5. Emphasis & Dialogue Mechanics</h2>
+<p>These are used to shape sentence stress or manage multi-character conversational dynamics.</p>
+<p>**Tags**: [emphasized], [stress on next word], [understated], [interrupting], [overlapping]</p>
+<h2>6. Character Archetypes & Accents</h2>
+<p>You can direct the AI to take on a specific persona or accent mid-sentence without changing the base voice model.</p>
+<p>**Tags**: [pirate voice], [French accent], [British accent], [Australian accent], [Southern US accent], [evil scientist voice], [childlike tone], [fantasy narrator], [sci-fi AI voice], [classic film noir]</p>
+<h2>How to use them effectively:</h2>
+<p>Tags are case-insensitive ([SIGH] works the same as [sigh]). You can also stack them together to create layered performances. For example, writing [nervous][whispering] I think someone is out there. will combine both the emotion and the delivery style. The effect of a tag generally persists until a new tag is introduced or the paragraph ends.</p>
+<h2>Want to Create Viral Videos Like These? 👇</h2>
+<h2>Stop guessing. Get the step-by-step guides to mastering AI content.</h2>
+<p>Inside Ai School, you’ll get to know the exact Ai Workflows and detailed guides on how to make real $$ with Ai Content.</p>
+<p>PLUS you also get:</p>
+<p>✅ Prompt Vault: Copy/Paste exact Viral Prompts</p>
+<p>✅ Daily Trend Alert: Never miss out on Viral Trends</p>
+<p>✅ VIP Network: Access to Top 0.1% 1B+ views Creators</p>
+<p>✅ Step by Step Ai Course: Video Tutorials and Guides</p>
+<p>![AI Injection footer logo](https://aiinjection.com/wp-content/uploads/2026/01/logo-footer.webp "logo-footer")</p>
+<p>Limerick, Ireland</p>
+<p>mail@aiinjection.com</p>
+<h4>Learn AI</h4>
+<p>Join the best communities to learn AI content creation. Top free and paid groups for AI video, image generation, automation, and earning online.</p>
+<h4>AI Toolset</h4>
+<p>AI Injection AI Toolset featuring ElevenLabs, FlexClip, and MindStudio. Access the best tools for audio, video, and AI development to scale your content.</p>
+<p>© 2026 AI Injection • [Privacy Policy](https://aiinjection.com/privacy-policy/) • [Cookie Policy](https://aiinjection.com/cookie-policy/) • [Disclaimer](https://aiinjection.com/disclaimer/) • [TOS](https://aiinjection.com/terms-of-service/)</p>
+<p>Page load link</p>
+<p>Search for:</p>
+<ul>
+<li>[Home](https://aiinjection.com/)</li>
+<li>[Shot Design](https://aiinjection.com/shot-design/)</li>
+<li>[Prompt Library](https://aiinjection.com/prompt-library/)</li>
+<li>[AI Toolset](https://aiinjection.com/ai-toolset/)</li>
+<li>[Learn AI](https://aiinjection.com/learn-ai/)</li>
+<li>[Download Music](https://aiinjection.com/music/)</li>
+</ul>
+<p>We use cookies to analyze our traffic, personalize content, and provide social media features. You can choose to accept all or manage your preferences in the settings</p>
+<p>Accept</p>
+<h4>Analytics & Performance</h4>
+<p>We use tools like Google Analytics to understand how visitors interact with our website. This helps us improve our tutorials and user experience. All data is anonymized.</p>
+<h4>Video Embeds</h4>
+<p>We embed videos from external providers like YouTube to demonstrate AI tools. Loading these videos may share data with those providers according to their own privacy policies.</p>
+<p>Go to Top</p>
+  </div>
+</section>
+
+<div class="footer-cta">
+  <h2>Want Weekly New Prompts + Live Workshops?</h2>
+  <p>Join the AI Injection Skool community. 1,000+ creators sharing what works in AI video, image, and music. New prompts every week. Workshops, breakdowns, and the templates that actually convert.</p>
+  <a class="cta-btn" href="https://www.skool.com/ai-injection-4241">Join AI Injection Skool — Free</a>
+  <div class="cta-url">skool.com/ai-injection-4241</div>
+</div>
+
+</body>
+</html>

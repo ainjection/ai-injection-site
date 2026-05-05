@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Premium AI Tools — All in one place | AI Injection</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
+<meta name="description" content="Every AI Injection premium tool in one place. Cinematic Workflow, Kling, Nano Banana Builder, Auto-Post Systems, the Mega Prompt Library and more.">
+<meta property="og:title" content="Premium AI Tools — AI Injection">
+<meta property="og:description" content="Every AI Injection premium tool. Cinematic Workflow, Kling, prompt builders, auto-post systems, and the 5,280-prompt Mega Library.">
+<link rel="icon" href="../get-the-pack/images/site-icon.png" type="image/png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --aii-primary: #00D4FF;
+    --aii-secondary: #8B5CF6;
+    --aii-bg: #0F0F23;
+    --aii-bg-light: #1a1a35;
+    --aii-text: #FFFFFF;
+    --aii-text-muted: #a8a8c0;
+    --aii-glow: rgba(0, 212, 255, 0.5);
+  }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0; padding: 0;
+    background: var(--aii-bg);
+    color: var(--aii-text);
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    line-height: 1.55;
+  }
+  a { color: var(--aii-primary); text-decoration: none; }
+
+  /* === STICKY BAR (same as the rest of the site) === */
+  body { padding-top: 56px; }
+  #aii-skool-cta {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 999999;
+    height: 56px; display: flex; align-items: center; justify-content: center;
+    gap: 14px; padding: 0 24px;
+    background: linear-gradient(90deg, #0F0F23 0%, #1a1140 50%, #0F0F23 100%);
+    border-bottom: 1px solid rgba(0, 212, 255, 0.4);
+    box-shadow: 0 2px 30px rgba(0, 212, 255, 0.25);
+    color: #FFFFFF; overflow: hidden;
+  }
+  #aii-skool-cta::before {
+    content: ''; position: absolute; inset: 0;
+    background: radial-gradient(ellipse at center, rgba(0,212,255,0.15) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  #aii-skool-cta .aii-cta-text { font-size: 14px; font-weight: 600; z-index: 1; }
+  #aii-skool-cta .aii-cta-pulse {
+    display: inline-block; width: 8px; height: 8px; border-radius: 50%;
+    background: #00D4FF; box-shadow: 0 0 10px #00D4FF, 0 0 20px #00D4FF;
+    margin-right: 10px; animation: aii-pulse 1.6s ease-in-out infinite;
+    vertical-align: middle;
+  }
+  @keyframes aii-pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(1.4); }
+  }
+  #aii-skool-cta .aii-cta-button {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 8px 16px;
+    background: linear-gradient(135deg, #00D4FF 0%, #8B5CF6 100%);
+    color: #0F0F23 !important; font-weight: 800; font-size: 13px;
+    border-radius: 24px; text-decoration: none;
+    box-shadow: 0 0 20px rgba(0, 212, 255, 0.5);
+    z-index: 1; white-space: nowrap;
+  }
+  #aii-skool-cta .aii-cta-button.ghost {
+    background: transparent; color: #FFFFFF !important;
+    border: 1px solid rgba(0,212,255,0.55); box-shadow: none;
+  }
+  @media (max-width: 720px) {
+    #aii-skool-cta { padding: 0 10px; gap: 8px; }
+    #aii-skool-cta .aii-cta-text { display: none; }
+    #aii-skool-cta .aii-cta-button { padding: 6px 12px; font-size: 12px; }
+  }
+
+  /* === HERO === */
+  .hero {
+    padding: 80px 24px 60px;
+    text-align: center;
+    background:
+      radial-gradient(ellipse at 25% 20%, rgba(139,92,246,0.18) 0%, transparent 55%),
+      radial-gradient(ellipse at 80% 60%, rgba(0,212,255,0.18) 0%, transparent 55%),
+      var(--aii-bg);
+  }
+  .hero-eyebrow {
+    display: inline-block;
+    font-size: 13px; letter-spacing: 0.25em;
+    color: var(--aii-secondary); font-weight: 700; text-transform: uppercase;
+    padding: 6px 14px; border: 1px solid rgba(139,92,246,0.4);
+    border-radius: 20px; margin-bottom: 24px;
+  }
+  .hero h1 {
+    font-size: clamp(36px, 6vw, 64px);
+    font-weight: 900; line-height: 1.05;
+    letter-spacing: -0.02em; margin: 0 auto 20px;
+    max-width: 900px;
+    background: linear-gradient(135deg, #ffffff 0%, #00D4FF 50%, #8B5CF6 100%);
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+  }
+  .hero p {
+    font-size: 18px; color: var(--aii-text-muted);
+    max-width: 640px; margin: 0 auto 32px;
+  }
+  .hero .nav-row {
+    display: flex; gap: 14px; flex-wrap: wrap; justify-content: center;
+  }
+  .nav-link {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 10px 18px;
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 22px;
+    color: #fff !important; font-weight: 600; font-size: 13px;
+    text-decoration: none; transition: border-color .15s, background .15s;
+  }
+  .nav-link:hover { border-color: var(--aii-primary); background: rgba(0,212,255,0.06); }
+
+  /* === SECTIONS === */
+  section.products {
+    padding: 60px 24px;
+    max-width: 1300px;
+    margin: 0 auto;
+  }
+  .section-title {
+    font-size: 28px; font-weight: 800;
+    margin: 0 0 8px; color: #fff;
+    letter-spacing: -0.01em;
+  }
+  .section-sub {
+    font-size: 15px; color: var(--aii-text-muted);
+    margin: 0 0 30px;
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 24px;
+  }
+
+  /* === CARD === */
+  .card {
+    background: linear-gradient(180deg, rgba(26,26,53,0.95) 0%, rgba(15,15,35,0.95) 100%);
+    border: 1px solid rgba(139,92,246,0.3);
+    border-radius: 16px;
+    overflow: hidden;
+    display: flex; flex-direction: column;
+    transition: border-color .2s, transform .2s, box-shadow .2s;
+  }
+  .card:hover {
+    border-color: var(--aii-primary);
+    transform: translateY(-4px);
+    box-shadow: 0 12px 50px rgba(0,212,255,0.2);
+  }
+  .card-cover {
+    aspect-ratio: 16 / 10;
+    background: #1a1a35 center/cover no-repeat;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+  .card-body {
+    padding: 24px 22px 22px;
+    display: flex; flex-direction: column;
+    flex: 1;
+  }
+  .card-eyebrow {
+    display: inline-block;
+    font-size: 10px; letter-spacing: 0.22em;
+    color: var(--aii-secondary); font-weight: 800;
+    text-transform: uppercase; margin-bottom: 10px;
+  }
+  .card h3 {
+    font-size: 17px; font-weight: 800;
+    line-height: 1.3; margin: 0 0 10px;
+    color: #fff; letter-spacing: -0.005em;
+  }
+  .card .desc {
+    font-size: 13px; color: var(--aii-text-muted);
+    line-height: 1.5; margin: 0 0 18px;
+    flex: 1;
+  }
+  .card .cta {
+    align-self: flex-start;
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 10px 18px;
+    background: linear-gradient(135deg, #8B5CF6 0%, #00D4FF 100%);
+    color: #0F0F23 !important; font-weight: 800; font-size: 13px;
+    border-radius: 22px; text-decoration: none;
+    box-shadow: 0 0 20px rgba(139,92,246,0.4);
+    transition: transform .15s, box-shadow .15s;
+  }
+  .card .cta:hover {
+    transform: translateY(-1px) scale(1.04);
+    box-shadow: 0 0 30px rgba(139,92,246,0.7);
+  }
+
+  /* === SKOOL UPSELL === */
+  .skool-strip {
+    margin: 60px 24px 0;
+    padding: 60px 24px;
+    background:
+      radial-gradient(ellipse at 50% 0%, rgba(0,212,255,0.18) 0%, transparent 60%),
+      var(--aii-bg-light);
+    text-align: center;
+    border-radius: 24px;
+    max-width: 1100px;
+    margin-left: auto; margin-right: auto;
+  }
+  .skool-strip h2 {
+    font-size: clamp(24px, 3.5vw, 32px);
+    margin: 0 0 12px; color: #fff;
+    background: linear-gradient(135deg, #00D4FF, #8B5CF6);
+    -webkit-background-clip: text; background-clip: text;
+    color: transparent; font-weight: 900;
+  }
+  .skool-strip p {
+    font-size: 16px; color: var(--aii-text-muted);
+    margin: 0 0 22px;
+  }
+  .skool-strip .btn {
+    display: inline-block;
+    padding: 14px 32px;
+    background: linear-gradient(135deg, #00D4FF, #8B5CF6);
+    color: #0F0F23; font-weight: 800;
+    border-radius: 28px; text-decoration: none;
+    box-shadow: 0 0 30px rgba(0,212,255,0.5);
+  }
+
+  /* === FOOTER === */
+  footer {
+    padding: 40px 24px 50px;
+    text-align: center;
+    color: var(--aii-text-muted); font-size: 13px;
+    border-top: 1px solid rgba(255,255,255,0.05);
+    margin-top: 50px;
+  }
+  footer a { color: var(--aii-text-muted); margin: 0 8px; }
+</style>
+</head>
+<body>
+
+<!-- Sticky bar -->
+<div id="aii-skool-cta" role="banner">
+  <span class="aii-cta-text"><span class="aii-cta-pulse"></span>Free download + community for AI creators</span>
+  <a class="aii-cta-button" href="../get-the-pack/raw.html">📥 Get the Free Prompt Pack</a>
+  <a class="aii-cta-button ghost" href="https://www.skool.com/ai-injection-4241" target="_blank" rel="noopener noreferrer">Join Skool</a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <span class="hero-eyebrow">⚡ Premium · 11 tools</span>
+  <h1>Every AI Injection Pro Tool. One place.</h1>
+  <p>Stop paying monthly for 10 different AI tools. These are the desktop apps, prompt builders, automation systems and prompt libraries that actually do the work.</p>
+  <div class="nav-row">
+    <a class="nav-link" href="../home/raw.html">← Back to Home</a>
+    <a class="nav-link" href="../ai-toolset/raw.html">AI Toolset</a>
+    <a class="nav-link" href="../prompt-library/raw.html">Prompt Library</a>
+    <a class="nav-link" href="../music/raw.html">Music</a>
+  </div>
+</section>
+
+<!-- SECTION: Cinematic & Video -->
+<section class="products">
+  <div class="section-title">🎥 Cinematic &amp; Video</div>
+  <p class="section-sub">Desktop apps and workflows for AI filmmaking, multi-shot scenes, and locked-character video generation.</p>
+  <div class="grid">
+    <div class="card">
+      <div class="card-cover" style="background-image:url('https://public-files.gumroad.com/1punv51g205v9m1z83l66erf04eg');"></div>
+      <div class="card-body">
+        <div class="card-eyebrow">Pro Tool · Desktop</div>
+        <h3>Cinematic Workflow — AI Video Studio</h3>
+        <p class="desc">Stop paying monthly for 10 different AI tools. 9 video models · 9 lip-sync models · 7 image tools, all in one app.</p>
+        <a class="gumroad-button cta" href="https://digitalexpress77.gumroad.com/l/lforxm?wanted=true">Get it on Gumroad →</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-cover" style="background-image:url('https://public-files.gumroad.com/92w3k4a76zw0j5opafr6kxbj3w67');"></div>
+      <div class="card-body">
+        <div class="card-eyebrow">Pro Tool · Desktop</div>
+        <h3>Kling Cinematic Workflow</h3>
+        <p class="desc">Multi-shot AI filmmaking with locked character + voice. Built for creators who need more than one-off shots.</p>
+        <a class="gumroad-button cta" href="https://digitalexpress77.gumroad.com/l/lpwqiq?wanted=true">Get it on Gumroad →</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-cover" style="background-image:url('https://public-files.gumroad.com/isljhrrkcqpnad1caj7c217qfhos');"></div>
+      <div class="card-body">
+        <div class="card-eyebrow">Pro Tool · Local</div>
+        <h3>Video Agent Pro — Local AI Video Workstation</h3>
+        <p class="desc">AI video editor that renders in seconds and writes its own code. Includes 3D Hero Library.</p>
+        <a class="gumroad-button cta" href="https://digitalexpress77.gumroad.com/l/ioqrnn?wanted=true">Get it on Gumroad →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION: Generators & Builders -->
+<section class="products">
+  <div class="section-title">🛠️ Prompt Builders &amp; Auto-Post Systems</div>
+  <p class="section-sub">Generation tools, prompt builders, and the automation systems that ship content while you sleep.</p>
+  <div class="grid">
+    <div class="card">
+      <div class="card-cover" style="background-image:url('https://public-files.gumroad.com/1tqdbcdvij9lg4lcd31e1b8weqdd');"></div>
+      <div class="card-body">
+        <div class="card-eyebrow">Pro Tool · Source code</div>
+        <h3>Nano Banana Prompt Builder (with source code)</h3>
+        <p class="desc">Cinematic consistency without the monthly Higgsfield bill. Source code included so you own it forever.</p>
+        <a class="gumroad-button cta" href="https://digitalexpress77.gumroad.com/l/yafrjf?wanted=true">Get it on Gumroad →</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-cover" style="background-image:url('https://public-files.gumroad.com/1punv51g205v9m1z83l66erf04eg');"></div>
+      <div class="card-body">
+        <div class="card-eyebrow">Automation · Stop posting manually</div>
+        <h3>ALL-IN-ONE AI Influencer Auto-Post System</h3>
+        <p class="desc">Seedream Dashboard + auto-post pipeline. The system real AI influencers don't talk about.</p>
+        <a class="gumroad-button cta" href="https://digitalexpress77.gumroad.com/l/bymfa?wanted=true">Get it on Gumroad →</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-cover" style="background-image:url('https://public-files.gumroad.com/6gkz2zw7nny0cjhziwoqzkrlhx6x');"></div>
+      <div class="card-body">
+        <div class="card-eyebrow">Automation · Windows desktop</div>
+        <h3>Upload Once. Post Everywhere.</h3>
+        <p class="desc">Upload one image or video → instantly publish to every connected platform. One click, one upload.</p>
+        <a class="gumroad-button cta" href="https://digitalexpress77.gumroad.com/l/bwicqm?wanted=true">Get it on Gumroad →</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-cover" style="background-image:url('https://public-files.gumroad.com/3fhulsgsqhm3mvkj97uvndih3iu5');"></div>
+      <div class="card-body">
+        <div class="card-eyebrow">Mega Bundle · 5,280+ prompts</div>
+        <h3>The Ultimate AI Prompts Mega Library</h3>
+        <p class="desc">Stop wasting hours crafting prompts. 5,280+ ready-to-use professional prompts across every category.</p>
+        <a class="gumroad-button cta" href="https://digitalexpress77.gumroad.com/l/pwmsoy?wanted=true">Get it on Gumroad →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION: Tools & Bonus -->
+<section class="products">
+  <div class="section-title">🧰 Tools &amp; Bonus</div>
+  <p class="section-sub">Side-projects and adjacent tools — research, teaching pack generation, data export, and more.</p>
+  <div class="grid">
+    <div class="card">
+      <div class="card-cover" style="background-image:url('https://public-files.gumroad.com/sr6wi4a22rj9pkbzl0alja21q8b4');"></div>
+      <div class="card-body">
+        <div class="card-eyebrow">Chrome extension · Research</div>
+        <h3>KDP Research Tool — Find Profitable Amazon Niches</h3>
+        <p class="desc">Stop wasting hours scrolling Amazon. Turns every KDP search into a niche score so you can publish smarter.</p>
+        <a class="gumroad-button cta" href="https://digitalexpress77.gumroad.com/l/ongds?wanted=true">Get it on Gumroad →</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-cover" style="background-image:url('https://public-files.gumroad.com/hasx4sivlakoknguuoihiyommyeb');"></div>
+      <div class="card-body">
+        <div class="card-eyebrow">Local tool · Education</div>
+        <h3>YouTube Teaching Pack Generator (Local)</h3>
+        <p class="desc">Turn any YouTube video into a complete teaching pack. Lesson plan, slides, scripts, handouts, and quizzes.</p>
+        <a class="gumroad-button cta" href="https://digitalexpress77.gumroad.com/l/frfbl?wanted=true">Get it on Gumroad →</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-cover" style="background-image:url('https://public-files.gumroad.com/1punv51g205v9m1z83l66erf04eg');"></div>
+      <div class="card-body">
+        <div class="card-eyebrow">Utility · Stop paying overages</div>
+        <h3>Airtable Downloader — Save Your Data</h3>
+        <p class="desc">Airtable gets expensive fast. Download every record before you hit a paywall.</p>
+        <a class="gumroad-button cta" href="https://digitalexpress77.gumroad.com/l/dyhlpo?wanted=true">Get it on Gumroad →</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-cover" style="background-image:url('https://public-files.gumroad.com/8x4nwb53x3r3qaofvjs9biotw8gj');"></div>
+      <div class="card-body">
+        <div class="card-eyebrow">Digital download · 256 pages</div>
+        <h3>256 Christmas Country Coloring Pages for Adults</h3>
+        <p class="desc">Rustic holiday scenes, cozy farmhouses, winter cottages. Printable digital bundle, Volume 2.</p>
+        <a class="gumroad-button cta" href="https://digitalexpress77.gumroad.com/l/telaer?wanted=true">Get it on Gumroad →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKOOL UPSELL -->
+<div class="skool-strip">
+  <h2>Want all of these + weekly new prompts?</h2>
+  <p>Join 1,000+ creators inside the AI Injection Skool community. Free. New prompts every week. Live workshops.</p>
+  <a class="btn" href="https://www.skool.com/ai-injection-4241" target="_blank" rel="noopener noreferrer">Join AI Injection Skool — Free →</a>
+</div>
+
+<footer>
+  <div>© 2026 AI Injection · by PPR Holdings</div>
+  <div style="margin-top:8px;">
+    <a href="../home/raw.html">Home</a> ·
+    <a href="../ai-toolset/raw.html">AI Toolset</a> ·
+    <a href="../prompt-library/raw.html">Prompt Library</a> ·
+    <a href="../shot-design/raw.html">Shot Design</a> ·
+    <a href="../music/raw.html">Music</a> ·
+    <a href="../get-the-pack/raw.html">Free Pack</a>
+  </div>
+</footer>
+
+<!-- Gumroad overlay checkout -->
+<script src="https://gumroad.com/js/gumroad.js" async></script>
+
+</body>
+</html>

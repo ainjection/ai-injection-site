@@ -1,0 +1,26 @@
+# Build artifacts
+__pycache__/
+*.pyc
+*.pyo
+_compress.log
+_compress_map.json
+
+# Original heavyweight files (compressed versions are kept)
+*.wav
+# DO NOT ignore PNG/JPG broadly — some logos must stay PNG
+# Originals are deleted by compress_assets.py
+
+# Local server
+.python-version
+
+# Editor
+.vscode/
+.idea/
+*.swp
+.DS_Store
+Thumbs.db
+
+# Vercel/Cloudflare cache
+.vercel/
+.wrangler/
+node_modules/

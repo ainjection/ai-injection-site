@@ -1,0 +1,56 @@
+{
+  "_meta": {
+    "discovered_at": "2026-05-03",
+    "source_root": "https://aishotstudio.com/",
+    "total_urls": 35,
+    "content_pages": 28,
+    "scope": "full-site clone (all sections + sub-pages) — Rob wants every prompt page mirrored as a portfolio template reference"
+  },
+  "tier_1_high_value_prompt_pages": [
+    {"url": "https://aishotstudio.com/42-camera-movements-ai-prompts", "title": "42 Camera Movements", "status": "pending"},
+    {"url": "https://aishotstudio.com/27-cinematic-looks-lighting-for-ai-video-prompts", "title": "27 Cinematic Looks & Lighting", "status": "pending"},
+    {"url": "https://aishotstudio.com/26-camera-angles-shot-types", "title": "26 Camera Angles & Shot Types", "status": "pending"},
+    {"url": "https://aishotstudio.com/song-genres-and-subgenres-prompts", "title": "46 Song Genres & Subgenres", "status": "pending"},
+    {"url": "https://aishotstudio.com/viral-video-transitions", "title": "Viral Video Transitions", "status": "pending"},
+    {"url": "https://aishotstudio.com/text-to-video-prompt-structure", "title": "Text-to-Video Prompt Structure", "status": "pending"}
+  ],
+  "tier_2_hub_pages": [
+    {"url": "https://aishotstudio.com/", "title": "Home", "status": "pending"},
+    {"url": "https://aishotstudio.com/shot-design", "title": "Shot Design hub", "status": "pending"},
+    {"url": "https://aishotstudio.com/prompt-library", "title": "Prompt Library hub", "status": "pending"},
+    {"url": "https://aishotstudio.com/ai-toolset", "title": "AI Toolset", "status": "pending"},
+    {"url": "https://aishotstudio.com/learn-ai", "title": "Learn AI", "status": "pending"}
+  ],
+  "tier_3_specialized_prompt_pages": [
+    {"url": "https://aishotstudio.com/still-camera-how-to-fix-camera", "title": "Still Camera Fix", "status": "pending"},
+    {"url": "https://aishotstudio.com/true-360-180-degree-camera-orbit", "title": "True 360/180 Camera Orbit", "status": "pending"},
+    {"url": "https://aishotstudio.com/higgsfield-camera-comparison", "title": "Higgsfield Camera Comparison", "status": "pending"},
+    {"url": "https://aishotstudio.com/higgsfield-focal-length-examples", "title": "Higgsfield Focal Length", "status": "pending"},
+    {"url": "https://aishotstudio.com/higgsfield-aperture-examples", "title": "Higgsfield Aperture", "status": "pending"},
+    {"url": "https://aishotstudio.com/comparison-of-16-ai-image-generators", "title": "16 AI Image Generators Compared", "status": "pending"},
+    {"url": "https://aishotstudio.com/elevenlabs-audio-tags-list", "title": "ElevenLabs Audio Tags", "status": "pending"},
+    {"url": "https://aishotstudio.com/technical-portrait-poses-prompts", "title": "Technical Portrait Poses", "status": "pending"},
+    {"url": "https://aishotstudio.com/gender-swap-image-and-video-prompts", "title": "Gender Swap Prompts", "status": "pending"},
+    {"url": "https://aishotstudio.com/character-actor-catwalk", "title": "Character Actor Catwalk", "status": "pending"},
+    {"url": "https://aishotstudio.com/border-break-video-master-prompt", "title": "Border Break Master Prompt", "status": "pending"}
+  ],
+  "tier_4_meta_prompt_pages": [
+    {"url": "https://aishotstudio.com/why-you-so-obsessed-with-me-meta-prompt", "title": "Why You So Obsessed With Me Meta Prompt", "status": "already_captured_as_skill", "note": "saved as ~/.claude/skills/prank-reel/SKILL.md"},
+    {"url": "https://aishotstudio.com/lacoste-crocodile-seedance-2-prompt", "title": "Lacoste Crocodile (Seedance 2)", "status": "pending"},
+    {"url": "https://aishotstudio.com/morning-rush-seedance-2-prompt", "title": "Morning Rush (Seedance 2)", "status": "pending"},
+    {"url": "https://aishotstudio.com/volleyball-freeze-frame-seedance-2-prompt", "title": "Volleyball Freeze Frame", "status": "pending"},
+    {"url": "https://aishotstudio.com/phone-catch-seedance-2-0-prompt", "title": "Phone Catch (Seedance 2.0)", "status": "pending"},
+    {"url": "https://aishotstudio.com/cockroaches-bed", "title": "Cockroaches Bed", "status": "pending"}
+  ],
+  "tier_5_already_captured": [
+    {"url": "https://aishotstudio.com/music", "title": "Music page", "status": "captured", "path": "site-clones/aishotstudio-music/"}
+  ],
+  "skip_legal": [
+    "https://aishotstudio.com/privacy-policy",
+    "https://aishotstudio.com/cookie-policy",
+    "https://aishotstudio.com/disclaimer",
+    "https://aishotstudio.com/terms-of-service",
+    "https://aishotstudio.com/links",
+    "https://aishotstudio.com/category/random-prompts"
+  ]
+}

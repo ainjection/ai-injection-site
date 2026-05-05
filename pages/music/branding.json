@@ -1,0 +1,125 @@
+{
+  "colorScheme": "dark",
+  "fonts": [
+    {
+      "family": "Helvetica",
+      "role": "body"
+    },
+    {
+      "family": "Arial",
+      "role": "body"
+    },
+    {
+      "family": "Heebo",
+      "role": "heading"
+    },
+    {
+      "family": "Font Awesome 5 Free",
+      "role": "unknown"
+    },
+    {
+      "family": "Times New Roman",
+      "role": "unknown"
+    }
+  ],
+  "colors": {
+    "primary": "#1E293B",
+    "accent": "#D344FA",
+    "background": "#030303",
+    "textPrimary": "#FFFFFF",
+    "link": "#D344FA"
+  },
+  "typography": {
+    "fontFamilies": {
+      "primary": "Helvetica",
+      "heading": "Heebo"
+    },
+    "fontStacks": {
+      "heading": [
+        "Heebo",
+        "Arial",
+        "Helvetica",
+        "sans-serif"
+      ],
+      "body": [
+        "Heebo",
+        "Arial",
+        "Helvetica",
+        "sans-serif"
+      ],
+      "paragraph": [
+        "Heebo",
+        "Arial",
+        "Helvetica",
+        "sans-serif"
+      ]
+    },
+    "fontSizes": {
+      "h1": "43.9423px",
+      "h2": "43.9423px",
+      "body": "18px"
+    }
+  },
+  "spacing": {
+    "baseUnit": 4,
+    "borderRadius": "4px"
+  },
+  "components": {
+    "input": {
+      "background": "#212934",
+      "textColor": "#A8ABB4",
+      "borderColor": "#A8ABB4",
+      "borderRadius": "0px",
+      "borderRadiusCorners": {
+        "topLeft": "0px",
+        "topRight": "0px",
+        "bottomRight": "0px",
+        "bottomLeft": "0px"
+      },
+      "shadow": "none"
+    }
+  },
+  "images": {
+    "logo": "https://aishotstudio.com/wp-content/uploads/2026/01/logo.webp",
+    "favicon": "https://aishotstudio.com/wp-content/uploads/2026/01/AiShotStudio-site-icon.png",
+    "ogImage": "https://aishotstudio.com/wp-content/uploads/2026/04/AI-Music-Library.webp",
+    "logoHref": "https://aishotstudio.com/",
+    "logoAlt": "logo"
+  },
+  "__llm_logo_reasoning": {
+    "selectedIndex": 0,
+    "reasoning": "Selected #0 because it is visible, located in the header, links to the homepage, and matches the brand name 'AI Shot Studio'.",
+    "confidence": 0.95,
+    "source": "llm"
+  },
+  "personality": {
+    "tone": "modern",
+    "energy": "medium",
+    "targetAudience": "creators and musicians interested in AI-generated music"
+  },
+  "designSystem": {
+    "framework": "custom",
+    "componentLibrary": ""
+  },
+  "confidence": {
+    "buttons": 0.85,
+    "colors": 0.9,
+    "overall": 0.875
+  },
+  "__llm_metadata": {
+    "logoSelection": {
+      "llmCalled": true,
+      "llmSucceeded": true,
+      "finalSource": "llm",
+      "rawLogoSelection": {
+        "selectedLogoIndex": 0,
+        "selectedLogoReasoning": "Selected #0 because it is visible, located in the header, links to the homepage, and matches the brand name 'AI Shot Studio'.",
+        "confidence": 0.95
+      }
+    },
+    "buttonClassification": {
+      "llmCalled": false,
+      "llmSucceeded": true
+    }
+  }
+}

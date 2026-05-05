@@ -1,0 +1,164 @@
+[
+  {
+    "slug": "ai-toolset",
+    "url": "https://aishotstudio.com/ai-toolset/",
+    "status": "ok",
+    "md_lines": 178,
+    "images_total": 63,
+    "images_downloaded": 50,
+    "images_failed": 0
+  },
+  {
+    "slug": "learn-ai",
+    "url": "https://aishotstudio.com/learn-ai/",
+    "status": "ok",
+    "md_lines": 116,
+    "images_total": 33,
+    "images_downloaded": 33,
+    "images_failed": 0
+  },
+  {
+    "slug": "still-camera-fix",
+    "url": "https://aishotstudio.com/still-camera-how-to-fix-camera/",
+    "status": "ok",
+    "md_lines": 62,
+    "images_total": 17,
+    "images_downloaded": 17,
+    "images_failed": 0
+  },
+  {
+    "slug": "true-360-180-orbit",
+    "url": "https://aishotstudio.com/true-360-180-degree-camera-orbit/",
+    "status": "ok",
+    "md_lines": 62,
+    "images_total": 17,
+    "images_downloaded": 17,
+    "images_failed": 0
+  },
+  {
+    "slug": "higgsfield-camera-comparison",
+    "url": "https://aishotstudio.com/higgsfield-camera-comparison/",
+    "status": "ok",
+    "md_lines": 120,
+    "images_total": 89,
+    "images_downloaded": 50,
+    "images_failed": 0
+  },
+  {
+    "slug": "higgsfield-focal-length",
+    "url": "https://aishotstudio.com/higgsfield-focal-length-examples/",
+    "status": "ok",
+    "md_lines": 175,
+    "images_total": 41,
+    "images_downloaded": 41,
+    "images_failed": 0
+  },
+  {
+    "slug": "higgsfield-aperture",
+    "url": "https://aishotstudio.com/higgsfield-aperture-examples/",
+    "status": "ok",
+    "md_lines": 138,
+    "images_total": 29,
+    "images_downloaded": 29,
+    "images_failed": 0
+  },
+  {
+    "slug": "16-ai-image-generators",
+    "url": "https://aishotstudio.com/comparison-of-16-ai-image-generators/",
+    "status": "ok",
+    "md_lines": 180,
+    "images_total": 209,
+    "images_downloaded": 50,
+    "images_failed": 0
+  },
+  {
+    "slug": "elevenlabs-audio-tags",
+    "url": "https://aishotstudio.com/elevenlabs-audio-tags-list/",
+    "status": "ok",
+    "md_lines": 124,
+    "images_total": 26,
+    "images_downloaded": 26,
+    "images_failed": 0
+  },
+  {
+    "slug": "technical-portrait-poses",
+    "url": "https://aishotstudio.com/technical-portrait-poses-prompts/",
+    "status": "ok",
+    "md_lines": 330,
+    "images_total": 161,
+    "images_downloaded": 50,
+    "images_failed": 0
+  },
+  {
+    "slug": "gender-swap-prompts",
+    "url": "https://aishotstudio.com/gender-swap-image-and-video-prompts/",
+    "status": "ok",
+    "md_lines": 100,
+    "images_total": 26,
+    "images_downloaded": 26,
+    "images_failed": 0
+  },
+  {
+    "slug": "character-actor-catwalk",
+    "url": "https://aishotstudio.com/character-actor-catwalk/",
+    "status": "ok",
+    "md_lines": 108,
+    "images_total": 18,
+    "images_downloaded": 18,
+    "images_failed": 0
+  },
+  {
+    "slug": "border-break-master",
+    "url": "https://aishotstudio.com/border-break-video-master-prompt/",
+    "status": "ok",
+    "md_lines": 105,
+    "images_total": 21,
+    "images_downloaded": 21,
+    "images_failed": 0
+  },
+  {
+    "slug": "lacoste-crocodile-seedance",
+    "url": "https://aishotstudio.com/lacoste-crocodile-seedance-2-prompt/",
+    "status": "ok",
+    "md_lines": 111,
+    "images_total": 17,
+    "images_downloaded": 17,
+    "images_failed": 0
+  },
+  {
+    "slug": "morning-rush-seedance",
+    "url": "https://aishotstudio.com/morning-rush-seedance-2-prompt/",
+    "status": "ok",
+    "md_lines": 115,
+    "images_total": 21,
+    "images_downloaded": 21,
+    "images_failed": 0
+  },
+  {
+    "slug": "volleyball-freeze-seedance",
+    "url": "https://aishotstudio.com/volleyball-freeze-frame-seedance-2-prompt/",
+    "status": "ok",
+    "md_lines": 164,
+    "images_total": 21,
+    "images_downloaded": 21,
+    "images_failed": 0
+  },
+  {
+    "slug": "phone-catch-seedance",
+    "url": "https://aishotstudio.com/phone-catch-seedance-2-0-prompt/",
+    "status": "ok",
+    "md_lines": 131,
+    "images_total": 21,
+    "images_downloaded": 21,
+    "images_failed": 0
+  },
+  {
+    "slug": "cockroaches-bed",
+    "url": "https://aishotstudio.com/cockroaches-bed/",
+    "status": "ok",
+    "md_lines": 78,
+    "images_total": 17,
+    "images_downloaded": 17,
+    "images_failed": 0
+  }
+]
